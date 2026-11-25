@@ -1,5 +1,9 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 32 32" fill="none" role="img" aria-label="Cloudinary Image Lab logo">
-  <rect x="1" y="1" width="30" height="30" rx="7" fill="#111111" stroke="#27272A" stroke-width="1.5"/>
-  <path d="M16 7L24 21H8L16 7Z" stroke="#FAFAFA" stroke-width="1.75" stroke-linejoin="round"/>
-  <line x1="16" y1="11" x2="16" y2="21" stroke="#22C55E" stroke-width="1.5" stroke-linecap="round"/>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100" role="img" aria-labelledby="title">
+  <title id="title">Image Lab — Compress</title>
+  <rect x="10" y="10" width="80" height="80" rx="18" fill="#111111" stroke="#303030"/>
+  <g fill="none" stroke="#fafafa" stroke-width="3.5" stroke-linejoin="round" stroke-linecap="round">
+    <rect x="27" y="27" width="46" height="46" rx="6"/>
+    <path d="M35 35 L44 44 M35 43 V35 H43 M65 65 L56 56 M57 65 H65 V57"/>
+    <rect x="44" y="44" width="12" height="12" rx="2" fill="#fafafa"/>
+  </g>
 </svg>
