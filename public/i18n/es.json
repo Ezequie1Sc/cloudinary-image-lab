@@ -16,11 +16,11 @@
     "closeMenu": "Cerrar menú de navegación"
   },
   "hero": {
-    "eyebrow": "IMPULSADO POR CLOUDINARY",
-    "title": "Menos peso. Mismo impacto.",
-    "description": "Explora las transformaciones inteligentes de imágenes y descubre cómo ofrecer experiencias visuales optimizadas sin comprometer la calidad.",
+    "titlePrimary": "Menos peso.",
+    "titleSecondary": "Mismo impacto.",
+    "description": "Optimiza tus imágenes. Conserva cada detalle.",
     "primaryCta": "Explorar laboratorio",
-    "secondaryCta": "Ver documentación"
+    "secondaryCta": "Documentación"
   },
   "features": {
     "eyebrow": "CAPACIDADES",

@@ -16,11 +16,11 @@
     "closeMenu": "Close navigation menu"
   },
   "hero": {
-    "eyebrow": "POWERED BY CLOUDINARY",
-    "title": "Less weight. Same impact.",
-    "description": "Explore intelligent image transformations and discover how to deliver optimized visual experiences without compromising quality.",
+    "titlePrimary": "Less weight.",
+    "titleSecondary": "Same impact.",
+    "description": "Optimize your images. Preserve every detail.",
     "primaryCta": "Explore Image Lab",
-    "secondaryCta": "View Documentation"
+    "secondaryCta": "Documentation"
   },
   "features": {
     "eyebrow": "CAPABILITIES",
