@@ -1,0 +1,120 @@
+<header class="cil-header">
+  <div class="cil-container cil-header-inner">
+    <div class="cil-header-left">
+      <a routerLink="/" class="cil-brand cil-focusable" (click)="closeMobileMenu()">
+        <img
+          src="/assets/branding/logo-mark.svg"
+          width="24"
+          height="24"
+          alt=""
+          aria-hidden="true"
+          class="cil-brand-logo"
+        />
+        <span class="cil-brand-name">{{ 'navigation.brand' | translate }}</span>
+      </a>
+
+      <span class="cil-cloudinary-pill" title="Cloudinary SDK">
+        <svg lucideCloud [size]="12" aria-hidden="true"></svg>
+        <span>{{ 'navigation.cloudinaryBadge' | translate }}</span>
+      </span>
+    </div>
+
+    <nav class="cil-nav-desktop" aria-label="Main navigation">
+      <a
+        routerLink="/"
+        routerLinkActive="cil-nav-link--active"
+        [routerLinkActiveOptions]="{ exact: true }"
+        class="cil-nav-link cil-focusable"
+      >
+        {{ 'navigation.home' | translate }}
+      </a>
+      <a
+        routerLink="/lab"
+        routerLinkActive="cil-nav-link--active"
+        class="cil-nav-link cil-focusable"
+      >
+        {{ 'navigation.imageLab' | translate }}
+      </a>
+      <a
+        routerLink="/docs"
+        routerLinkActive="cil-nav-link--active"
+        class="cil-nav-link cil-focusable"
+      >
+        {{ 'navigation.documentation' | translate }}
+      </a>
+    </nav>
+
+    <div class="cil-header-right">
+      <cil-language-switcher />
+
+      <a
+        [href]="externalLinks.developerGithub"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="cil-github-link cil-focusable"
+        [attr.aria-label]="'navigation.githubProfile' | translate"
+      >
+        <span>GitHub</span>
+        <svg lucideExternalLink [size]="13" aria-hidden="true"></svg>
+      </a>
+
+      <button
+        type="button"
+        class="cil-mobile-toggle cil-focusable"
+        (click)="toggleMobileMenu()"
+        [attr.aria-expanded]="mobileMenuOpen()"
+        [attr.aria-label]="
+          (mobileMenuOpen() ? 'navigation.closeMenu' : 'navigation.openMenu') | translate
+        "
+      >
+        @if (mobileMenuOpen()) {
+          <svg lucideX [size]="18" aria-hidden="true"></svg>
+        } @else {
+          <svg lucideMenu [size]="18" aria-hidden="true"></svg>
+        }
+      </button>
+    </div>
+  </div>
+
+  @if (mobileMenuOpen()) {
+    <nav class="cil-nav-mobile cil-animate-fade-in" aria-label="Mobile navigation">
+      <div class="cil-container cil-nav-mobile-inner">
+        <a
+          routerLink="/"
+          routerLinkActive="cil-nav-link--active"
+          [routerLinkActiveOptions]="{ exact: true }"
+          class="cil-mobile-link cil-focusable"
+          (click)="closeMobileMenu()"
+        >
+          {{ 'navigation.home' | translate }}
+        </a>
+        <a
+          routerLink="/lab"
+          routerLinkActive="cil-nav-link--active"
+          class="cil-mobile-link cil-focusable"
+          (click)="closeMobileMenu()"
+        >
+          {{ 'navigation.imageLab' | translate }}
+        </a>
+        <a
+          routerLink="/docs"
+          routerLinkActive="cil-nav-link--active"
+          class="cil-mobile-link cil-focusable"
+          (click)="closeMobileMenu()"
+        >
+          {{ 'navigation.documentation' | translate }}
+        </a>
+        <a
+          [href]="externalLinks.developerGithub"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="cil-mobile-link cil-focusable"
+          (click)="closeMobileMenu()"
+        >
+          <span>GitHub</span>
+          <svg lucideExternalLink [size]="14" aria-hidden="true"></svg>
+        </a>
+      </div>
+    </nav>
+  }
+</header>

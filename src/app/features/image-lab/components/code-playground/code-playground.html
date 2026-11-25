@@ -1,0 +1,35 @@
+<section class="cil-playground cil-surface" aria-label="Code playground">
+  <div class="cil-playground-header">
+    <div>
+      <h2 class="cil-playground-title">{{ 'codePlayground.heading' | translate }}</h2>
+      <p class="cil-playground-subtitle">{{ 'codePlayground.subtitle' | translate }}</p>
+    </div>
+
+    <cil-button variant="secondary" size="sm" (click)="copySnippet()">
+      @if (copied()) {
+        <svg lucideCheck [size]="14" aria-hidden="true"></svg>
+        <span>{{ 'codePlayground.copied' | translate }}</span>
+      } @else {
+        <svg lucideCopy [size]="14" aria-hidden="true"></svg>
+        <span>{{ 'codePlayground.copy' | translate }}</span>
+      }
+    </cil-button>
+  </div>
+
+  <div class="cil-playground-tabs" role="tablist">
+    @for (tab of tabs; track tab) {
+      <button
+        type="button"
+        role="tab"
+        class="cil-tab-btn cil-focusable"
+        [class.cil-tab-btn--active]="activeTab() === tab"
+        [attr.aria-selected]="activeTab() === tab"
+        (click)="selectTab(tab)"
+      >
+        {{ 'codePlayground.tabs.' + tab | translate }}
+      </button>
+    }
+  </div>
+
+  <pre class="cil-code-block"><code>{{ snippet() }}</code></pre>
+</section>

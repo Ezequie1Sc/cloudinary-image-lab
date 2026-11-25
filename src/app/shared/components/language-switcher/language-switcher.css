@@ -1,0 +1,43 @@
+.cil-lang-switcher {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.25rem;
+  height: 30px;
+  padding: 0 0.5rem;
+  border: 1px solid var(--cil-border);
+  border-radius: var(--cil-radius-sm);
+  background-color: var(--cil-surface);
+  font-family: var(--cil-font-mono);
+  font-size: 0.75rem;
+}
+
+.cil-lang-icon {
+  color: var(--cil-text-muted);
+  margin-right: 0.125rem;
+}
+
+.cil-lang-btn {
+  background: transparent;
+  border: none;
+  padding: 0.125rem 0.25rem;
+  border-radius: 4px;
+  color: var(--cil-text-muted);
+  cursor: pointer;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: 500;
+  transition: color var(--cil-duration-fast) var(--cil-ease);
+}
+
+.cil-lang-btn:hover {
+  color: var(--cil-text-primary);
+}
+
+.cil-lang-btn--active {
+  color: var(--cil-text-primary);
+  background-color: var(--cil-surface-secondary);
+}
+
+.cil-lang-divider {
+  color: var(--cil-border-hover);
+}

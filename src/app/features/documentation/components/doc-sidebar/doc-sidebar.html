@@ -1,0 +1,13 @@
+<aside class="cil-doc-sidebar" [attr.aria-label]="'documentation.tocTitle' | translate">
+  <p class="cil-doc-sidebar-title">
+    {{ 'documentation.tocTitle' | translate }}
+  </p>
+
+  <nav class="cil-doc-nav">
+    @for (section of sections(); track section.id) {
+      <a routerLink="/docs" [fragment]="section.id" class="cil-doc-nav-link cil-focusable">
+        {{ 'documentation.sections.' + section.key + '.title' | translate }}
+      </a>
+    }
+  </nav>
+</aside>

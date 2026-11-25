@@ -1,0 +1,60 @@
+.cil-features {
+  padding-block: 3.5rem;
+}
+
+.cil-section-header {
+  max-width: 600px;
+  margin-bottom: 2rem;
+}
+
+.cil-section-title {
+  margin: 0.5rem 0 0;
+  font-size: 1.5rem;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.cil-section-subtitle {
+  margin: 0.5rem 0 0;
+  font-size: 0.9375rem;
+  color: var(--cil-text-secondary);
+}
+
+.cil-features-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  border: 1px solid var(--cil-border);
+  border-radius: var(--cil-radius-md);
+  background-color: var(--cil-border);
+  gap: 1px;
+  overflow: hidden;
+}
+
+@media (min-width: 768px) {
+  .cil-features-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.cil-feature-cell {
+  background-color: var(--cil-surface);
+  padding: 1.5rem;
+}
+
+.cil-feature-icon {
+  color: var(--cil-text-primary);
+  margin-bottom: 0.875rem;
+}
+
+.cil-feature-title {
+  margin: 0;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--cil-text-primary);
+}
+
+.cil-feature-text {
+  margin: 0.5rem 0 0;
+  font-size: 0.875rem;
+  color: var(--cil-text-secondary);
+}

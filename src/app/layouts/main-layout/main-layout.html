@@ -1,0 +1,11 @@
+<a href="#main-content" class="cil-skip-link cil-focusable">
+  {{ 'accessibility.skipToContent' | translate }}
+</a>
+<div class="cil-shell">
+  <cil-header />
+  <main id="main-content" class="cil-main" tabindex="-1">
+    <router-outlet />
+  </main>
+  <cil-footer />
+  <cil-toast-container />
+</div>

@@ -1,0 +1,95 @@
+<section class="cil-responsive cil-surface" aria-label="Responsive image preview">
+  <div class="cil-responsive-header">
+    <div>
+      <h2 class="cil-responsive-title">{{ 'responsivePreview.heading' | translate }}</h2>
+      <p class="cil-responsive-subtitle">{{ 'responsivePreview.subtitle' | translate }}</p>
+    </div>
+
+    <div class="cil-viewport-switcher" role="group" aria-label="Simulated viewport">
+      <button
+        type="button"
+        class="cil-vp-btn cil-focusable"
+        [class.cil-vp-btn--active]="viewport() === 'mobile'"
+        [attr.aria-pressed]="viewport() === 'mobile'"
+        (click)="setViewport('mobile')"
+      >
+        <svg lucideSmartphone [size]="14" aria-hidden="true"></svg>
+        <span>{{ 'responsivePreview.viewports.mobile' | translate }}</span>
+      </button>
+      <button
+        type="button"
+        class="cil-vp-btn cil-focusable"
+        [class.cil-vp-btn--active]="viewport() === 'tablet'"
+        [attr.aria-pressed]="viewport() === 'tablet'"
+        (click)="setViewport('tablet')"
+      >
+        <svg lucideTablet [size]="14" aria-hidden="true"></svg>
+        <span>{{ 'responsivePreview.viewports.tablet' | translate }}</span>
+      </button>
+      <button
+        type="button"
+        class="cil-vp-btn cil-focusable"
+        [class.cil-vp-btn--active]="viewport() === 'desktop'"
+        [attr.aria-pressed]="viewport() === 'desktop'"
+        (click)="setViewport('desktop')"
+      >
+        <svg lucideMonitor [size]="14" aria-hidden="true"></svg>
+        <span>{{ 'responsivePreview.viewports.desktop' | translate }}</span>
+      </button>
+    </div>
+  </div>
+
+  <div class="cil-responsive-body">
+    <p class="cil-responsive-notice">{{ 'responsivePreview.simulatedNotice' | translate }}</p>
+
+    <div class="cil-preview-frame-wrap">
+      <div
+        class="cil-preview-frame"
+        [style.max-width.px]="activeViewportMeta().containerWidthPx"
+      >
+        @if (activeCandidate(); as candidate) {
+          <img
+            [src]="candidate.url"
+            [attr.srcset]="srcSet()"
+            [attr.sizes]="sizesAttribute"
+            [alt]="altText()"
+            [width]="candidate.width"
+            [height]="(candidate.width * 2) / 3"
+            loading="lazy"
+            decoding="async"
+            class="cil-preview-img"
+          />
+        }
+        <div class="cil-preview-caption font-mono-tech">
+          <span>{{ activeViewportMeta().containerWidthPx }}px container</span>
+          <span>
+            {{ 'responsivePreview.targetWidth' | translate }}:
+            w_{{ activeViewportMeta().candidateWidth }}
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <div class="cil-responsive-meta">
+      <div>
+        <span class="cil-meta-label">{{ 'responsivePreview.sizesLabel' | translate }}</span>
+        <code class="cil-meta-code">{{ sizesAttribute }}</code>
+      </div>
+      <div>
+        <span class="cil-meta-label">{{ 'responsivePreview.srcsetLabel' | translate }}</span>
+        <div class="cil-candidate-pills">
+          @for (candidate of candidates(); track candidate.width) {
+            <span
+              class="cil-candidate-pill font-mono-tech"
+              [class.cil-candidate-pill--active]="
+                candidate.width === activeViewportMeta().candidateWidth
+              "
+            >
+              w_{{ candidate.width }}
+            </span>
+          }
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

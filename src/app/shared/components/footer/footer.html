@@ -1,0 +1,50 @@
+<footer class="cil-footer">
+  <div class="cil-container cil-footer-inner">
+    <div class="cil-footer-brand">
+      <div class="cil-footer-title-row">
+        <img
+          src="/assets/branding/logo-mark.svg"
+          width="20"
+          height="20"
+          alt=""
+          aria-hidden="true"
+        />
+        <span class="cil-footer-title">{{ 'footer.title' | translate }}</span>
+      </div>
+      <p class="cil-footer-meta">
+        {{ 'footer.builtWith' | translate }} · {{ 'footer.developerLabel' | translate }}
+        <strong class="cil-footer-dev">{{ developerName }}</strong>
+      </p>
+    </div>
+
+    <div class="cil-footer-links">
+      <a
+        [href]="externalLinks.developerGithub"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="cil-footer-link cil-focusable"
+      >
+        <span>{{ 'footer.links.github' | translate }}</span>
+        <svg lucideExternalLink [size]="12" aria-hidden="true"></svg>
+      </a>
+      <a
+        [href]="externalLinks.cloudinaryDocs"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="cil-footer-link cil-focusable"
+      >
+        <span>{{ 'footer.links.cloudinaryDocs' | translate }}</span>
+        <svg lucideExternalLink [size]="12" aria-hidden="true"></svg>
+      </a>
+      <a
+        [href]="externalLinks.devCommunity"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="cil-footer-link cil-focusable"
+      >
+        <span>{{ 'footer.links.devCommunity' | translate }}</span>
+        <svg lucideExternalLink [size]="12" aria-hidden="true"></svg>
+      </a>
+    </div>
+  </div>
+</footer>

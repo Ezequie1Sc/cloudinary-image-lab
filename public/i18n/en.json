@@ -1,0 +1,266 @@
+{
+  "meta": {
+    "homeTitle": "Cloudinary Image Lab — Less weight. Same impact.",
+    "labTitle": "Interactive Lab — Cloudinary Image Lab",
+    "docsTitle": "Documentation — Cloudinary Image Lab",
+    "description": "Explore intelligent Cloudinary image transformations in Angular 22 with real optimization metrics and interactive Before & After comparison."
+  },
+  "navigation": {
+    "brand": "Image Lab",
+    "home": "Home",
+    "imageLab": "Image Lab",
+    "documentation": "Documentation",
+    "cloudinaryBadge": "Cloudinary SDK",
+    "githubProfile": "Developer GitHub",
+    "openMenu": "Open navigation menu",
+    "closeMenu": "Close navigation menu"
+  },
+  "hero": {
+    "eyebrow": "POWERED BY CLOUDINARY",
+    "title": "Less weight. Same impact.",
+    "description": "Explore intelligent image transformations and discover how to deliver optimized visual experiences without compromising quality.",
+    "primaryCta": "Explore Image Lab",
+    "secondaryCta": "View Documentation"
+  },
+  "features": {
+    "eyebrow": "CAPABILITIES",
+    "title": "Built for real-world image delivery",
+    "subtitle": "Inspect every transformation parameter, compare visual fidelity side by side, and measure actual payload savings in the browser.",
+    "items": {
+      "autoFormat": {
+        "title": "Automatic Format Negotiation",
+        "description": "Deliver WebP, AVIF, JPEG, or PNG dynamically with f_auto so every browser receives the most efficient format it supports."
+      },
+      "smartQuality": {
+        "title": "Perceptual Quality Tuning",
+        "description": "Balance visual sharpness and byte weight using q_auto presets (best, good, eco, low) or fine-grained manual compression."
+      },
+      "realMetrics": {
+        "title": "Verifiable Browser Metrics",
+        "description": "Measure real downloaded Blob bytes, Content-Type headers, and intrinsic dimensions without synthetic estimates."
+      },
+      "angularReady": {
+        "title": "Angular 22 & SDK Code Output",
+        "description": "Copy production-ready delivery URLs, responsive HTML markup, and @cloudinary/url-gen + @cloudinary/ng snippets."
+      }
+    }
+  },
+  "educational": {
+    "eyebrow": "WHY IT MATTERS",
+    "title": "Images remain the heaviest asset on the modern web",
+    "description": "Serving unresized, legacy-format photos wastes bandwidth and delays rendering. Combining responsive widths (c_limit,w_*), automatic format selection (f_auto), and perceptual compression (q_auto) trims payloads while preserving visual clarity.",
+    "points": {
+      "format": "Format conversion: AVIF and WebP encode photographic detail in a fraction of legacy JPEG or PNG sizes.",
+      "quality": "Perceptual compression: q_auto analyzes each image instead of applying a blind fixed quality number.",
+      "dimensions": "Right-sized delivery: c_limit prevents upscaling while capping oversized camera assets to viewport needs."
+    },
+    "cta": "Launch the Interactive Lab"
+  },
+  "imageLab": {
+    "eyebrow": "INTERACTIVE WORKBENCH",
+    "title": "Cloudinary Image Lab",
+    "subtitle": "Select a verified Cloudinary demo asset, tune transformations, and inspect real optimization metrics.",
+    "cloudLabel": "Active Cloud",
+    "demoCloudNote": "Using public Cloudinary demo cloud",
+    "controlsHeading": "Transformation Controls",
+    "workspaceHeading": "Visual Comparison & Metrics"
+  },
+  "comparison": {
+    "original": "Original",
+    "optimized": "Optimized",
+    "sliderLabel": "Compare original and optimized image",
+    "sliderHint": "Drag handle or use Left and Right arrow keys",
+    "loading": "Loading image pair and measuring payloads...",
+    "errorTitle": "Unable to load image comparison",
+    "errorRetry": "Retry loading",
+    "sameAssetNote": "Both views render the exact same Cloudinary asset with and without transformations."
+  },
+  "transformations": {
+    "format": {
+      "label": "Output Format",
+      "hint": "Maps to Cloudinary f_* delivery transformation",
+      "options": {
+        "auto": "Auto",
+        "webp": "WebP",
+        "avif": "AVIF",
+        "jpg": "JPEG",
+        "png": "PNG"
+      }
+    },
+    "quality": {
+      "label": "Image Quality",
+      "hint": "Maps to Cloudinary q_* delivery transformation",
+      "manualValue": "Manual quality",
+      "options": {
+        "auto": "Auto",
+        "auto:best": "Auto Best",
+        "auto:good": "Auto Good",
+        "auto:eco": "Auto Eco",
+        "auto:low": "Auto Low",
+        "manual": "Manual"
+      }
+    },
+    "dimensions": {
+      "label": "Image Dimensions",
+      "hint": "Uses c_limit to avoid upscaling smaller originals",
+      "original": "Original"
+    },
+    "actions": {
+      "reset": "Reset Settings",
+      "copyUrl": "Copy URL",
+      "openImage": "Open Image"
+    }
+  },
+  "metrics": {
+    "heading": "Real Optimization Metrics",
+    "subheading": "Measured directly from fetched browser Blob payloads and Content-Type response headers.",
+    "originalSize": "Original file size",
+    "optimizedSize": "Optimized file size",
+    "bytesSaved": "Bytes saved",
+    "reduction": "Reduction",
+    "originalDimensions": "Original dimensions",
+    "optimizedDimensions": "Optimized dimensions",
+    "originalFormat": "Original format",
+    "optimizedFormat": "Optimized format",
+    "unavailable": "Unavailable",
+    "measuring": "Measuring...",
+    "heavierWarning": "The transformed file is larger than the original (for example, converting a JPEG to PNG). Try Auto, WebP, or AVIF.",
+    "corsNote": "Payload size reflects decoded Blob bytes fetched from Cloudinary. Transfer size over HTTP may be slightly smaller due to transport headers/caching.",
+    "resizeNote": "Includes both compression and dimension resizing savings.",
+    "compressionOnlyNote": "Reflects format and compression savings at original dimensions."
+  },
+  "gallery": {
+    "heading": "Demo Asset Gallery",
+    "all": "All",
+    "categories": {
+      "nature": "Nature",
+      "architecture": "Architecture",
+      "portrait": "Portrait",
+      "products": "Products",
+      "urban": "Urban"
+    },
+    "selected": "Selected"
+  },
+  "responsivePreview": {
+    "heading": "Responsive Image Delivery",
+    "subtitle": "Inspect how srcset and sizes pair with Cloudinary width transformations (c_limit,w_*) across device viewports.",
+    "viewports": {
+      "mobile": "Mobile",
+      "tablet": "Tablet",
+      "desktop": "Desktop"
+    },
+    "simulatedNotice": "Simulated container preview below. In production, the browser selects the optimal srcset candidate based on viewport width and device pixel ratio (DPR).",
+    "targetWidth": "Recommended candidate width",
+    "srcsetLabel": "Generated srcset candidates",
+    "sizesLabel": "sizes attribute"
+  },
+  "urlPreview": {
+    "heading": "Generated Transformation URL",
+    "copy": "Copy URL",
+    "copied": "Copied",
+    "open": "Open Image"
+  },
+  "codePlayground": {
+    "heading": "Code Playground",
+    "subtitle": "Production snippets synchronized with your current transformation settings.",
+    "copy": "Copy snippet",
+    "copied": "Copied",
+    "tabs": {
+      "url": "URL",
+      "html": "HTML",
+      "angular": "Angular",
+      "typescript": "TypeScript"
+    }
+  },
+  "documentation": {
+    "eyebrow": "TECHNICAL GUIDE",
+    "title": "Documentation",
+    "subtitle": "A developer reference for integrating Cloudinary image optimization with Angular 22.",
+    "tocTitle": "On this page",
+    "officialDocs": "Official Cloudinary Documentation",
+    "sections": {
+      "whatIsCloudinary": {
+        "title": "What is Cloudinary?",
+        "body": "Cloudinary is a cloud-based media management and delivery platform that stores master assets and generates transformed, cached variants on demand via URL parameters and official SDKs."
+      },
+      "whyOptimization": {
+        "title": "Why Image Optimization Matters",
+        "body": "High-resolution images frequently represent the majority of a page's byte weight. Delivering modern formats, perceptual compression, and viewport-appropriate dimensions can help improve Largest Contentful Paint (LCP) and reduce bandwidth usage, depending on the asset and network conditions."
+      },
+      "angularIntegration": {
+        "title": "Integrating Cloudinary with Angular 22",
+        "body": "Install @cloudinary/url-gen and @cloudinary/ng. Use @cloudinary/url-gen to compose type-safe CloudinaryImage instances with Signals and services, and render them with @cloudinary/ng or native HTML img elements with explicit width and height attributes."
+      },
+      "fAuto": {
+        "title": "How f_auto Works",
+        "body": "The f_auto delivery parameter instructs Cloudinary's CDN to inspect the incoming browser Accept header and automatically return the most efficient supported format such as AVIF or WebP, falling back to JPEG or PNG when needed."
+      },
+      "qAuto": {
+        "title": "How q_auto Works",
+        "body": "Unlike a static quality percentage, q_auto analyzes each image's visual complexity to choose an optimal compression level. Presets include q_auto:best, q_auto:good, q_auto:eco, and q_auto:low."
+      },
+      "modernFormats": {
+        "title": "WebP & AVIF Explained",
+        "body": "WebP and AVIF are modern image codecs designed for the web. AVIF typically achieves higher compression efficiency for photographs, while WebP offers fast decoding and broad compatibility."
+      },
+      "resizing": {
+        "title": "Safe Resizing with c_limit",
+        "body": "Combining c_limit with w_<pixels> scales down oversized originals while preserving aspect ratio and never upscaling images that are already smaller than the target width."
+      },
+      "responsive": {
+        "title": "Responsive Images with srcset & sizes",
+        "body": "Generating multiple width variants via Cloudinary lets the browser pick the smallest candidate that matches the layout width and device pixel ratio, avoiding wasted mobile downloads."
+      },
+      "metrics": {
+        "title": "Interpreting Optimization Metrics",
+        "body": "Cloudinary Image Lab fetches both the untransformed original and the transformed resource via the Fetch API, measuring Blob.size and reading the actual Content-Type header. This guarantees metrics match what the browser actually receives."
+      },
+      "usingLab": {
+        "title": "Using the Image Lab",
+        "body": "Pick a demo asset from the gallery, adjust format, quality, or max width in the right-hand panel, drag the Before & After divider to inspect visual quality, and copy the resulting URL or Angular code."
+      },
+      "cloudName": {
+        "title": "Configuring Your Own Cloud Name",
+        "body": "Update cloudName in src/environments/environment.ts and src/environments/environment.prod.ts (or provide CLOUDINARY_CONFIG). Replace the demo public IDs in src/app/core/constants/demo-images.constant.ts with assets from your own Cloudinary product environment."
+      },
+      "security": {
+        "title": "Security Considerations",
+        "body": "A Cloudinary Cloud Name is public by design for asset delivery. Never place your API Secret or signed Admin credentials in frontend code. If you add uploads later, use a restricted unsigned upload preset or a dedicated backend signing endpoint."
+      },
+      "performance": {
+        "title": "Performance Best Practices",
+        "body": "Set explicit width and height attributes to prevent Cumulative Layout Shift (CLS), reserve loading='lazy' for off-screen images only, cache measured transformation results, and cancel stale requests when users adjust controls rapidly."
+      }
+    }
+  },
+  "notifications": {
+    "urlCopied": "Transformation URL copied to clipboard.",
+    "codeCopied": "Code snippet copied to clipboard.",
+    "settingsReset": "Transformation settings reset to defaults.",
+    "copyFailed": "Could not copy to clipboard. Please copy manually."
+  },
+  "errors": {
+    "invalidPublicId": "Invalid Cloudinary image public ID.",
+    "networkError": "Network error while loading image metrics. Check your connection and try again.",
+    "corsBlocked": "Unable to read byte metrics due to browser CORS restrictions.",
+    "emptyStateTitle": "No images in this category",
+    "emptyStateDescription": "Choose another category to explore verified Cloudinary demo assets."
+  },
+  "footer": {
+    "title": "Cloudinary Image Lab",
+    "builtWith": "Built with Angular and Cloudinary",
+    "developerLabel": "Developed by",
+    "links": {
+      "github": "GitHub",
+      "cloudinaryDocs": "Cloudinary Documentation",
+      "devCommunity": "DEV Community"
+    }
+  },
+  "accessibility": {
+    "skipToContent": "Skip to main content",
+    "languageSwitcher": "Switch language",
+    "activeLanguage": "Current language",
+    "closeNotification": "Dismiss notification",
+    "externalLink": "Opens in a new tab"
+  }
+}

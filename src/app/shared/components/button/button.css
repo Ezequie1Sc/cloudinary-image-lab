@@ -1,0 +1,65 @@
+.cil-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  border-radius: var(--cil-radius-sm);
+  font-weight: 500;
+  cursor: pointer;
+  transition:
+    background-color var(--cil-duration-fast) var(--cil-ease),
+    border-color var(--cil-duration-fast) var(--cil-ease),
+    color var(--cil-duration-fast) var(--cil-ease),
+    opacity var(--cil-duration-fast) var(--cil-ease);
+  white-space: nowrap;
+}
+
+.cil-btn--sm {
+  height: 32px;
+  padding-inline: 0.75rem;
+  font-size: 0.8125rem;
+}
+
+.cil-btn--md {
+  height: 38px;
+  padding-inline: 1rem;
+  font-size: 0.875rem;
+}
+
+.cil-btn--primary {
+  background-color: var(--cil-white);
+  color: var(--cil-black);
+  border: 1px solid var(--cil-white);
+}
+
+.cil-btn--primary:hover:not(:disabled) {
+  background-color: #e4e4e7;
+  border-color: #e4e4e7;
+}
+
+.cil-btn--secondary {
+  background-color: var(--cil-surface);
+  color: var(--cil-text-primary);
+  border: 1px solid var(--cil-border);
+}
+
+.cil-btn--secondary:hover:not(:disabled) {
+  background-color: var(--cil-surface-secondary);
+  border-color: var(--cil-border-hover);
+}
+
+.cil-btn--ghost {
+  background-color: transparent;
+  color: var(--cil-text-secondary);
+  border: 1px solid transparent;
+}
+
+.cil-btn--ghost:hover:not(:disabled) {
+  color: var(--cil-text-primary);
+  background-color: var(--cil-surface-secondary);
+}
+
+.cil-btn:disabled {
+  opacity: 0.45;
+  cursor: not-allowed;
+}

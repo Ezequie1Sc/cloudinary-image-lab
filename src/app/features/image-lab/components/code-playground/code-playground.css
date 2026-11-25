@@ -1,0 +1,66 @@
+.cil-playground {
+  overflow: hidden;
+}
+
+.cil-playground-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.875rem 1rem;
+  border-bottom: 1px solid var(--cil-border);
+}
+
+.cil-playground-title {
+  margin: 0;
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.cil-playground-subtitle {
+  margin: 0.25rem 0 0;
+  font-size: 0.75rem;
+  color: var(--cil-text-muted);
+}
+
+.cil-playground-tabs {
+  display: flex;
+  gap: 0.25rem;
+  padding: 0.5rem 1rem;
+  border-bottom: 1px solid var(--cil-border);
+  background-color: var(--cil-surface);
+  overflow-x: auto;
+}
+
+.cil-tab-btn {
+  padding: 0.3rem 0.65rem;
+  border-radius: 5px;
+  border: 1px solid transparent;
+  background: transparent;
+  color: var(--cil-text-secondary);
+  font-family: var(--cil-font-mono);
+  font-size: 0.75rem;
+  cursor: pointer;
+}
+
+.cil-tab-btn:hover {
+  color: var(--cil-text-primary);
+}
+
+.cil-tab-btn--active {
+  color: var(--cil-text-primary);
+  background-color: var(--cil-surface-secondary);
+  border-color: var(--cil-border);
+}
+
+.cil-code-block {
+  margin: 0;
+  padding: 1rem;
+  background-color: var(--cil-bg-primary);
+  color: var(--cil-text-primary);
+  font-family: var(--cil-font-mono);
+  font-size: 0.8125rem;
+  line-height: 1.6;
+  overflow-x: auto;
+}

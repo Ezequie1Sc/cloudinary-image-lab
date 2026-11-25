@@ -1,0 +1,13 @@
+<button
+  [type]="type()"
+  [disabled]="disabled()"
+  [attr.aria-label]="ariaLabel()"
+  class="cil-btn cil-focusable"
+  [class.cil-btn--primary]="variant() === 'primary'"
+  [class.cil-btn--secondary]="variant() === 'secondary'"
+  [class.cil-btn--ghost]="variant() === 'ghost'"
+  [class.cil-btn--sm]="size() === 'sm'"
+  [class.cil-btn--md]="size() === 'md'"
+>
+  <ng-content />
+</button>

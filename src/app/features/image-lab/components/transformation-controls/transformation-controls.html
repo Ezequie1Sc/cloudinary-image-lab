@@ -1,0 +1,50 @@
+<aside class="cil-controls cil-surface" aria-label="Transformation controls">
+  <div class="cil-controls-header">
+    <h2 class="cil-controls-title">{{ 'imageLab.controlsHeading' | translate }}</h2>
+    <span class="cil-cloud-tag font-mono-tech">{{ cloudName() }}</span>
+  </div>
+
+  <div class="cil-controls-body">
+    <cil-format-selector [value]="config().format" (valueChange)="formatChange.emit($event)" />
+
+    <div class="cil-controls-divider" aria-hidden="true"></div>
+
+    <cil-quality-selector
+      [mode]="config().qualityMode"
+      [manualQuality]="config().manualQuality"
+      (modeChange)="qualityModeChange.emit($event)"
+      (manualQualityChange)="manualQualityChange.emit($event)"
+    />
+
+    <div class="cil-controls-divider" aria-hidden="true"></div>
+
+    <cil-dimension-selector
+      [value]="config().maxWidth"
+      (valueChange)="maxWidthChange.emit($event)"
+    />
+  </div>
+
+  <div class="cil-controls-actions">
+    <cil-button variant="primary" size="md" (click)="copyUrl()">
+      <svg lucideCopy [size]="14" aria-hidden="true"></svg>
+      <span>{{ 'transformations.actions.copyUrl' | translate }}</span>
+    </cil-button>
+
+    <div class="cil-controls-secondary-row">
+      <a
+        [href]="optimizedUrl()"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="cil-open-link cil-focusable"
+      >
+        <svg lucideExternalLink [size]="14" aria-hidden="true"></svg>
+        <span>{{ 'transformations.actions.openImage' | translate }}</span>
+      </a>
+
+      <cil-button variant="secondary" size="sm" (click)="onReset()">
+        <svg lucideRotateCcw [size]="14" aria-hidden="true"></svg>
+        <span>{{ 'transformations.actions.reset' | translate }}</span>
+      </cil-button>
+    </div>
+  </div>
+</aside>

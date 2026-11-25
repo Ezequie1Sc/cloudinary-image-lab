@@ -1,0 +1,79 @@
+.cil-controls {
+  display: flex;
+  flex-direction: column;
+}
+
+.cil-controls-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0.875rem 1rem;
+  border-bottom: 1px solid var(--cil-border);
+}
+
+.cil-controls-title {
+  margin: 0;
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.cil-cloud-tag {
+  padding: 0.125rem 0.45rem;
+  border-radius: 4px;
+  border: 1px solid var(--cil-border);
+  background-color: var(--cil-bg-primary);
+  font-size: 0.6875rem;
+  color: var(--cil-text-secondary);
+}
+
+.cil-controls-body {
+  display: flex;
+  flex-direction: column;
+  gap: 1.125rem;
+  padding: 1rem;
+}
+
+.cil-controls-divider {
+  height: 1px;
+  background-color: var(--cil-border);
+}
+
+.cil-controls-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  padding: 1rem;
+  border-top: 1px solid var(--cil-border);
+}
+
+.cil-controls-actions cil-button ::ng-deep .cil-btn {
+  width: 100%;
+}
+
+.cil-controls-secondary-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 0.5rem;
+}
+
+.cil-open-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  height: 32px;
+  padding-inline: 0.75rem;
+  border-radius: var(--cil-radius-sm);
+  border: 1px solid var(--cil-border);
+  background-color: var(--cil-surface);
+  color: var(--cil-text-primary);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  text-decoration: none;
+  white-space: nowrap;
+}
+
+.cil-open-link:hover {
+  background-color: var(--cil-surface-secondary);
+  border-color: var(--cil-border-hover);
+}

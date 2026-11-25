@@ -1,0 +1,56 @@
+.cil-container {
+  width: 100%;
+  max-width: var(--cil-container-max);
+  margin-inline: auto;
+  padding-inline: 1rem;
+}
+
+@media (min-width: 640px) {
+  .cil-container {
+    padding-inline: 1.5rem;
+  }
+}
+
+.cil-surface {
+  background-color: var(--cil-surface);
+  border: 1px solid var(--cil-border);
+  border-radius: var(--cil-radius-md);
+}
+
+.cil-surface-secondary {
+  background-color: var(--cil-surface-secondary);
+  border: 1px solid var(--cil-border);
+  border-radius: var(--cil-radius-sm);
+}
+
+.cil-focusable:focus-visible {
+  outline: none;
+  box-shadow: var(--cil-focus-ring);
+}
+
+.cil-eyebrow {
+  font-family: var(--cil-font-mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--cil-text-muted);
+}
+
+.cil-subtle-grid {
+  background-image:
+    linear-gradient(to right, rgba(39, 39, 42, 0.26) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(39, 39, 42, 0.26) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}

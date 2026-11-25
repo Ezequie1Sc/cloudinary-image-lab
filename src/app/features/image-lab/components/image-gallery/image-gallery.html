@@ -1,0 +1,56 @@
+<section class="cil-gallery cil-surface" aria-label="Demo image gallery">
+  <div class="cil-gallery-header">
+    <h2 class="cil-gallery-title">{{ 'gallery.heading' | translate }}</h2>
+    <div class="cil-category-tabs" role="tablist">
+      @for (cat of categories; track cat) {
+        <button
+          type="button"
+          role="tab"
+          class="cil-cat-btn cil-focusable"
+          [class.cil-cat-btn--active]="activeCategory() === cat"
+          [attr.aria-selected]="activeCategory() === cat"
+          (click)="categoryChange.emit(cat)"
+        >
+          @if (cat === 'all') {
+            {{ 'gallery.all' | translate }}
+          } @else {
+            {{ 'gallery.categories.' + cat | translate }}
+          }
+        </button>
+      }
+    </div>
+  </div>
+
+  @if (assets().length === 0) {
+    <cil-empty-state
+      [title]="'errors.emptyStateTitle' | translate"
+      [description]="'errors.emptyStateDescription' | translate"
+    />
+  } @else {
+    <div class="cil-thumb-grid">
+      @for (asset of assets(); track asset.id) {
+        <button
+          type="button"
+          class="cil-thumb-item cil-focusable"
+          [class.cil-thumb-item--active]="asset.id === selectedImageId()"
+          [attr.aria-pressed]="asset.id === selectedImageId()"
+          (click)="imageSelect.emit(asset)"
+        >
+          <img
+            [src]="getThumbnailUrl(asset.publicId)"
+            [alt]="getAssetAlt(asset)"
+            width="240"
+            height="160"
+            loading="lazy"
+            decoding="async"
+            class="cil-thumb-img"
+          />
+          <span class="cil-thumb-meta">
+            <span class="cil-thumb-name">{{ getAssetTitle(asset) }}</span>
+            <span class="cil-thumb-cat">{{ 'gallery.categories.' + asset.category | translate }}</span>
+          </span>
+        </button>
+      }
+    </div>
+  }
+</section>

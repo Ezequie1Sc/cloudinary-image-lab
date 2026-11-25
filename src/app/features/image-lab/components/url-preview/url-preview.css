@@ -1,0 +1,62 @@
+.cil-url-panel {
+  overflow: hidden;
+}
+
+.cil-url-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  border-bottom: 1px solid var(--cil-border);
+}
+
+.cil-url-title {
+  margin: 0;
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.cil-url-actions {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.cil-url-open {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  height: 32px;
+  padding-inline: 0.75rem;
+  border-radius: var(--cil-radius-sm);
+  border: 1px solid var(--cil-border);
+  background-color: var(--cil-surface);
+  color: var(--cil-text-primary);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  text-decoration: none;
+}
+
+.cil-url-open:hover {
+  background-color: var(--cil-surface-secondary);
+  border-color: var(--cil-border-hover);
+}
+
+.cil-url-box {
+  padding: 0.875rem 1rem;
+  background-color: var(--cil-bg-primary);
+  font-size: 0.8125rem;
+  color: var(--cil-text-secondary);
+  word-break: break-all;
+  line-height: 1.6;
+}
+
+.cil-url-token {
+  color: var(--cil-text-primary);
+  background-color: var(--cil-surface-secondary);
+  border: 1px solid var(--cil-border);
+  border-radius: 4px;
+  padding: 0.05rem 0.3rem;
+}

@@ -1,0 +1,30 @@
+<section class="cil-educational">
+  <div class="cil-container">
+    <div class="cil-edu-panel">
+      <div class="cil-edu-copy">
+        <p class="cil-eyebrow">{{ 'educational.eyebrow' | translate }}</p>
+        <h2 class="cil-edu-title">{{ 'educational.title' | translate }}</h2>
+        <p class="cil-edu-description">{{ 'educational.description' | translate }}</p>
+        <a routerLink="/lab" class="cil-edu-link cil-focusable">
+          <span>{{ 'educational.cta' | translate }}</span>
+          <svg lucideArrowRight [size]="15" aria-hidden="true"></svg>
+        </a>
+      </div>
+
+      <ul class="cil-edu-list">
+        <li class="cil-edu-item">
+          <svg lucideCheck [size]="16" class="cil-edu-check" aria-hidden="true"></svg>
+          <span>{{ 'educational.points.format' | translate }}</span>
+        </li>
+        <li class="cil-edu-item">
+          <svg lucideCheck [size]="16" class="cil-edu-check" aria-hidden="true"></svg>
+          <span>{{ 'educational.points.quality' | translate }}</span>
+        </li>
+        <li class="cil-edu-item">
+          <svg lucideCheck [size]="16" class="cil-edu-check" aria-hidden="true"></svg>
+          <span>{{ 'educational.points.dimensions' | translate }}</span>
+        </li>
+      </ul>
+    </div>
+  </div>
+</section>

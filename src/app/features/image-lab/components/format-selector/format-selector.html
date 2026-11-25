@@ -1,0 +1,21 @@
+<fieldset class="cil-control-group">
+  <legend class="cil-control-legend">
+    <span>{{ 'transformations.format.label' | translate }}</span>
+    <span class="cil-control-token">f_{{ value() }}</span>
+  </legend>
+  <p class="cil-control-hint">{{ 'transformations.format.hint' | translate }}</p>
+
+  <div class="cil-option-grid">
+    @for (option of options; track option) {
+      <button
+        type="button"
+        class="cil-option-btn cil-focusable"
+        [class.cil-option-btn--active]="value() === option"
+        [attr.aria-pressed]="value() === option"
+        (click)="valueChange.emit(option)"
+      >
+        {{ 'transformations.format.options.' + option | translate }}
+      </button>
+    }
+  </div>
+</fieldset>

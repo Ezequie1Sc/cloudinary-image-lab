@@ -1,0 +1,22 @@
+body {
+  font-family: var(--cil-font-sans);
+  background-color: var(--cil-bg-primary);
+  color: var(--cil-text-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-feature-settings: 'cv02', 'cv03', 'cv04', 'cv11';
+  line-height: 1.5;
+}
+
+code,
+pre,
+kbd,
+samp,
+.font-mono-tech {
+  font-family: var(--cil-font-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+.tabular-nums {
+  font-variant-numeric: tabular-nums;
+}

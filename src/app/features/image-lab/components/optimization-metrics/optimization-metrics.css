@@ -1,0 +1,124 @@
+.cil-metrics {
+  overflow: hidden;
+}
+
+.cil-metrics-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.875rem 1rem;
+  border-bottom: 1px solid var(--cil-border);
+}
+
+.cil-metrics-title {
+  margin: 0;
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.cil-metrics-subtitle {
+  margin: 0.25rem 0 0;
+  font-size: 0.75rem;
+  color: var(--cil-text-muted);
+}
+
+.cil-metrics-status {
+  font-size: 0.75rem;
+  color: var(--cil-text-secondary);
+}
+
+.cil-metrics-primary-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1px;
+  background-color: var(--cil-border);
+  border-bottom: 1px solid var(--cil-border);
+}
+
+@media (min-width: 640px) {
+  .cil-metrics-primary-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.cil-metric-cell {
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+  padding: 0.875rem 1rem;
+  background-color: var(--cil-surface);
+}
+
+.cil-metric-label {
+  font-size: 0.75rem;
+  color: var(--cil-text-muted);
+}
+
+.cil-metric-value {
+  font-size: 1.125rem;
+  font-weight: 600;
+  color: var(--cil-text-primary);
+}
+
+.cil-metric-value--positive {
+  color: var(--cil-success);
+}
+
+.cil-metric-value--negative {
+  color: var(--cil-error);
+}
+
+.cil-metrics-secondary-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 0.5rem;
+  padding: 0.875rem 1rem;
+  border-bottom: 1px solid var(--cil-border);
+}
+
+@media (min-width: 640px) {
+  .cil-metrics-secondary-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+.cil-metric-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.5rem;
+  font-size: 0.8125rem;
+}
+
+.cil-metric-subvalue {
+  color: var(--cil-text-primary);
+  font-size: 0.8125rem;
+}
+
+.cil-metrics-alert {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.5rem;
+  margin: 0.75rem 1rem 0;
+  padding: 0.625rem 0.75rem;
+  border-radius: var(--cil-radius-sm);
+  background-color: var(--cil-error-bg);
+  border: 1px solid var(--cil-error-border);
+  color: var(--cil-text-primary);
+  font-size: 0.75rem;
+}
+
+.cil-metrics-footnote {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.45rem;
+  padding: 0.75rem 1rem;
+  font-size: 0.75rem;
+  color: var(--cil-text-muted);
+}
+
+.cil-footnote-icon {
+  flex-shrink: 0;
+  margin-top: 2px;
+}

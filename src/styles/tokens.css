@@ -1,0 +1,45 @@
+:root {
+  /* Core Vercel / Geist Monochromatic Palette */
+  --cil-bg-primary: #09090b;
+  --cil-surface: #111111;
+  --cil-surface-secondary: #18181b;
+  --cil-border: #27272a;
+  --cil-border-hover: #3f3f46;
+
+  /* Text Hierarchy */
+  --cil-text-primary: #fafafa;
+  --cil-text-secondary: #a1a1aa;
+  --cil-text-muted: #71717a;
+
+  /* Semantic Accents (Green strictly for positive optimization outcomes) */
+  --cil-success: #22c55e;
+  --cil-success-bg: rgba(34, 197, 94, 0.1);
+  --cil-success-border: rgba(34, 197, 94, 0.25);
+  --cil-error: #ef4444;
+  --cil-error-bg: rgba(239, 68, 68, 0.1);
+  --cil-error-border: rgba(239, 68, 68, 0.28);
+  --cil-white: #ffffff;
+  --cil-black: #000000;
+
+  /* Typography */
+  --cil-font-sans: 'Geist Variable', 'Geist', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  --cil-font-mono: 'Geist Mono Variable', 'Geist Mono', ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, monospace;
+
+  /* Spacing & Layout */
+  --cil-container-max: 1200px;
+  --cil-header-height: 56px;
+
+  /* Radii */
+  --cil-radius-sm: 6px;
+  --cil-radius-md: 8px;
+  --cil-radius-lg: 12px;
+
+  /* Motion */
+  --cil-duration-fast: 150ms;
+  --cil-duration-base: 200ms;
+  --cil-duration-slow: 250ms;
+  --cil-ease: cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* Focus Ring */
+  --cil-focus-ring: 0 0 0 2px #09090b, 0 0 0 4px #fafafa;
+}

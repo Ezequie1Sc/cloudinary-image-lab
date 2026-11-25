@@ -1,0 +1,41 @@
+<fieldset class="cil-control-group">
+  <legend class="cil-control-legend">
+    <span>{{ 'transformations.quality.label' | translate }}</span>
+    <span class="cil-control-token">{{ tokenLabel() }}</span>
+  </legend>
+  <p class="cil-control-hint">{{ 'transformations.quality.hint' | translate }}</p>
+
+  <div class="cil-option-grid">
+    @for (option of options; track option) {
+      <button
+        type="button"
+        class="cil-option-btn cil-focusable"
+        [class.cil-option-btn--active]="mode() === option"
+        [attr.aria-pressed]="mode() === option"
+        (click)="modeChange.emit(option)"
+      >
+        {{ 'transformations.quality.options.' + option | translate }}
+      </button>
+    }
+  </div>
+
+  @if (mode() === 'manual') {
+    <div class="cil-manual-slider cil-animate-fade-in">
+      <div class="cil-manual-row">
+        <label for="manual-quality-slider" class="cil-manual-label">
+          {{ 'transformations.quality.manualValue' | translate }}
+        </label>
+        <span class="cil-manual-value font-mono-tech">{{ manualQuality() }}</span>
+      </div>
+      <input
+        id="manual-quality-slider"
+        type="range"
+        class="cil-range cil-focusable"
+        [min]="minQuality"
+        [max]="maxQuality"
+        [value]="manualQuality()"
+        (input)="onSliderInput($event)"
+      />
+    </div>
+  }
+</fieldset>

@@ -1,0 +1,32 @@
+.cil-tooltip-wrapper {
+  position: relative;
+  display: inline-flex;
+  align-items: center;
+}
+
+.cil-tooltip-bubble {
+  position: absolute;
+  bottom: calc(100% + 8px);
+  left: 50%;
+  transform: translateX(-50%) translateY(2px);
+  padding: 0.35rem 0.6rem;
+  border-radius: var(--cil-radius-sm);
+  background-color: var(--cil-surface-secondary);
+  border: 1px solid var(--cil-border);
+  color: var(--cil-text-primary);
+  font-size: 0.75rem;
+  line-height: 1.35;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transition:
+    opacity var(--cil-duration-fast) var(--cil-ease),
+    transform var(--cil-duration-fast) var(--cil-ease);
+  z-index: 40;
+}
+
+.cil-tooltip-wrapper:hover .cil-tooltip-bubble,
+.cil-tooltip-wrapper:focus-visible .cil-tooltip-bubble {
+  opacity: 1;
+  transform: translateX(-50%) translateY(0);
+}

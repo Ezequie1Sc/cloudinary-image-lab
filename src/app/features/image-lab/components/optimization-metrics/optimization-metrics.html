@@ -1,0 +1,109 @@
+<section class="cil-metrics cil-surface" aria-label="Optimization metrics">
+  <div class="cil-metrics-header">
+    <div>
+      <h2 class="cil-metrics-title">{{ 'metrics.heading' | translate }}</h2>
+      <p class="cil-metrics-subtitle">{{ 'metrics.subheading' | translate }}</p>
+    </div>
+    @if (status() === 'loading') {
+      <span class="cil-metrics-status font-mono-tech">{{ 'metrics.measuring' | translate }}</span>
+    }
+  </div>
+
+  <div class="cil-metrics-primary-grid">
+    <div class="cil-metric-cell">
+      <span class="cil-metric-label">{{ 'metrics.originalSize' | translate }}</span>
+      @if (status() === 'loading') {
+        <cil-skeleton height="24px" width="84px" />
+      } @else {
+        <span class="cil-metric-value font-mono-tech">
+          {{ originalSize() ?? ('metrics.unavailable' | translate) }}
+        </span>
+      }
+    </div>
+
+    <div class="cil-metric-cell">
+      <span class="cil-metric-label">{{ 'metrics.optimizedSize' | translate }}</span>
+      @if (status() === 'loading') {
+        <cil-skeleton height="24px" width="84px" />
+      } @else {
+        <span class="cil-metric-value font-mono-tech">
+          {{ optimizedSize() ?? ('metrics.unavailable' | translate) }}
+        </span>
+      }
+    </div>
+
+    <div class="cil-metric-cell">
+      <span class="cil-metric-label">{{ 'metrics.bytesSaved' | translate }}</span>
+      @if (status() === 'loading') {
+        <cil-skeleton height="24px" width="84px" />
+      } @else {
+        <span
+          class="cil-metric-value font-mono-tech"
+          [class.cil-metric-value--positive]="isPositiveReduction()"
+          [class.cil-metric-value--negative]="result()?.isHeavier"
+        >
+          {{ bytesSavedLabel() ?? ('metrics.unavailable' | translate) }}
+        </span>
+      }
+    </div>
+
+    <div class="cil-metric-cell">
+      <span class="cil-metric-label">{{ 'metrics.reduction' | translate }}</span>
+      @if (status() === 'loading') {
+        <cil-skeleton height="24px" width="70px" />
+      } @else {
+        <span
+          class="cil-metric-value font-mono-tech"
+          [class.cil-metric-value--positive]="isPositiveReduction()"
+          [class.cil-metric-value--negative]="result()?.isHeavier"
+        >
+          {{ reductionLabel() ?? ('metrics.unavailable' | translate) }}
+        </span>
+      }
+    </div>
+  </div>
+
+  <div class="cil-metrics-secondary-grid">
+    <div class="cil-metric-row">
+      <span class="cil-metric-label">{{ 'metrics.originalDimensions' | translate }}</span>
+      <span class="cil-metric-subvalue font-mono-tech">
+        {{ originalDimensions() ?? ('metrics.unavailable' | translate) }}
+      </span>
+    </div>
+    <div class="cil-metric-row">
+      <span class="cil-metric-label">{{ 'metrics.optimizedDimensions' | translate }}</span>
+      <span class="cil-metric-subvalue font-mono-tech">
+        {{ optimizedDimensions() ?? ('metrics.unavailable' | translate) }}
+      </span>
+    </div>
+    <div class="cil-metric-row">
+      <span class="cil-metric-label">{{ 'metrics.originalFormat' | translate }}</span>
+      <span class="cil-metric-subvalue font-mono-tech">
+        {{ result()?.original?.formatLabel ?? ('metrics.unavailable' | translate) }}
+      </span>
+    </div>
+    <div class="cil-metric-row">
+      <span class="cil-metric-label">{{ 'metrics.optimizedFormat' | translate }}</span>
+      <span class="cil-metric-subvalue font-mono-tech">
+        {{ result()?.optimized?.formatLabel ?? ('metrics.unavailable' | translate) }}
+      </span>
+    </div>
+  </div>
+
+  @if (result()?.isHeavier) {
+    <div class="cil-metrics-alert" role="status">
+      <svg lucideAlertTriangle [size]="15" aria-hidden="true"></svg>
+      <span>{{ 'metrics.heavierWarning' | translate }}</span>
+    </div>
+  }
+
+  <div class="cil-metrics-footnote">
+    <svg lucideInfo [size]="14" class="cil-footnote-icon" aria-hidden="true"></svg>
+    <span>
+      {{ 'metrics.corsNote' | translate }}
+      @if (result(); as res) {
+        {{ (res.includesResizing ? 'metrics.resizeNote' : 'metrics.compressionOnlyNote') | translate }}
+      }
+    </span>
+  </div>
+</section>

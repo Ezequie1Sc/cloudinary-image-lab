@@ -1,0 +1,68 @@
+<div class="cil-container cil-lab-page">
+  <header class="cil-lab-header">
+    <div>
+      <p class="cil-eyebrow">{{ 'imageLab.eyebrow' | translate }}</p>
+      <h1 class="cil-lab-title">{{ 'imageLab.title' | translate }}</h1>
+      <p class="cil-lab-subtitle">{{ 'imageLab.subtitle' | translate }}</p>
+    </div>
+    <div class="cil-cloud-summary">
+      <span class="cil-cloud-label">{{ 'imageLab.cloudLabel' | translate }}</span>
+      <span class="cil-cloud-value font-mono-tech">{{ store.cloudName }}</span>
+    </div>
+  </header>
+
+  <div class="cil-lab-grid">
+    <div class="cil-lab-main-col">
+      <cil-image-comparator
+        [asset]="store.selectedImage()"
+        [originalUrl]="store.originalUrl()"
+        [optimizedUrl]="store.optimizedUrl()"
+        [result]="store.result()"
+        [status]="store.status()"
+        [errorKey]="store.errorKey()"
+        (retry)="store.retryMeasurement()"
+      />
+
+      <cil-optimization-metrics [result]="store.result()" [status]="store.status()" />
+
+      <cil-image-gallery
+        [assets]="store.filteredAssets()"
+        [selectedImageId]="store.selectedImage().id"
+        [activeCategory]="store.selectedCategory()"
+        (categoryChange)="store.selectCategory($event)"
+        (imageSelect)="store.selectImage($event)"
+      />
+    </div>
+
+    <div class="cil-lab-side-col">
+      <cil-transformation-controls
+        [config]="store.config()"
+        [optimizedUrl]="store.optimizedUrl()"
+        [cloudName]="store.cloudName"
+        (formatChange)="store.setFormat($event)"
+        (qualityModeChange)="store.setQualityMode($event)"
+        (manualQualityChange)="store.setManualQuality($event)"
+        (maxWidthChange)="store.setMaxWidth($event)"
+        (resetRequested)="store.resetSettings()"
+      />
+    </div>
+  </div>
+
+  <div class="cil-lab-lower">
+    <cil-url-preview [url]="store.optimizedUrl()" />
+
+    <cil-code-playground
+      [cloudName]="store.cloudName"
+      [publicId]="store.selectedImage().publicId"
+      [config]="store.config()"
+      [optimizedUrl]="store.optimizedUrl()"
+      [srcSet]="store.responsiveSrcSet()"
+    />
+
+    <cil-responsive-preview
+      [asset]="store.selectedImage()"
+      [candidates]="store.responsiveCandidates()"
+      [srcSet]="store.responsiveSrcSet()"
+    />
+  </div>
+</div>

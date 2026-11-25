@@ -1,0 +1,25 @@
+<div class="cil-toast-stack" aria-live="polite" aria-atomic="true">
+  @for (toast of toastService.toasts(); track toast.id) {
+    <div
+      class="cil-toast cil-animate-fade-in"
+      [class.cil-toast--success]="toast.variant === 'success'"
+      [class.cil-toast--error]="toast.variant === 'error'"
+      role="status"
+    >
+      @if (toast.variant === 'success') {
+        <svg lucideCheck [size]="15" class="cil-toast-icon cil-toast-icon--success" aria-hidden="true"></svg>
+      } @else if (toast.variant === 'error') {
+        <svg lucideAlertCircle [size]="15" class="cil-toast-icon cil-toast-icon--error" aria-hidden="true"></svg>
+      }
+      <span class="cil-toast-text">{{ toast.text }}</span>
+      <button
+        type="button"
+        class="cil-toast-close cil-focusable"
+        (click)="toastService.dismiss(toast.id)"
+        [attr.aria-label]="'accessibility.closeNotification' | translate"
+      >
+        <svg lucideX [size]="14" aria-hidden="true"></svg>
+      </button>
+    </div>
+  }
+</div>

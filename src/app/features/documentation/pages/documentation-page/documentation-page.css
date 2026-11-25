@@ -1,0 +1,109 @@
+.cil-docs-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
+  padding-top: 2.5rem;
+}
+
+@media (min-width: 960px) {
+  .cil-docs-layout {
+    grid-template-columns: 240px minmax(0, 1fr);
+    align-items: start;
+  }
+}
+
+.cil-docs-sidebar-col {
+  display: none;
+}
+
+@media (min-width: 960px) {
+  .cil-docs-sidebar-col {
+    display: block;
+  }
+}
+
+.cil-docs-header {
+  padding-bottom: 1.75rem;
+  border-bottom: 1px solid var(--cil-border);
+  margin-bottom: 2rem;
+}
+
+.cil-docs-title {
+  margin: 0.5rem 0 0;
+  font-size: 2rem;
+  font-weight: 600;
+  letter-spacing: -0.025em;
+}
+
+.cil-docs-subtitle {
+  margin: 0.625rem 0 0;
+  font-size: 0.9375rem;
+  color: var(--cil-text-secondary);
+  max-width: 62ch;
+}
+
+.cil-docs-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.25rem;
+}
+
+.cil-docs-ext-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.4rem 0.75rem;
+  border: 1px solid var(--cil-border);
+  border-radius: var(--cil-radius-sm);
+  background-color: var(--cil-surface);
+  color: var(--cil-text-primary);
+  font-size: 0.8125rem;
+  text-decoration: none;
+}
+
+.cil-docs-ext-link:hover {
+  border-color: var(--cil-border-hover);
+  background-color: var(--cil-surface-secondary);
+}
+
+.cil-doc-section {
+  padding-bottom: 2rem;
+  margin-bottom: 2rem;
+  border-bottom: 1px solid var(--cil-border);
+  scroll-margin-top: calc(var(--cil-header-height) + 1.5rem);
+}
+
+.cil-doc-section:last-child {
+  border-bottom: none;
+  margin-bottom: 0;
+}
+
+.cil-doc-h2 {
+  margin: 0 0 0.625rem;
+  font-size: 1.1875rem;
+  font-weight: 600;
+  letter-spacing: -0.015em;
+  color: var(--cil-text-primary);
+}
+
+.cil-doc-p {
+  margin: 0;
+  font-size: 0.9375rem;
+  line-height: 1.65;
+  color: var(--cil-text-secondary);
+  max-width: 72ch;
+}
+
+.cil-doc-code {
+  margin: 1rem 0 0;
+  padding: 1rem;
+  border: 1px solid var(--cil-border);
+  border-radius: var(--cil-radius-md);
+  background-color: var(--cil-surface);
+  color: var(--cil-text-primary);
+  font-family: var(--cil-font-mono);
+  font-size: 0.8125rem;
+  line-height: 1.6;
+  overflow-x: auto;
+}

@@ -1,0 +1,103 @@
+.cil-gallery {
+  padding: 1rem;
+}
+
+.cil-gallery-header {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  margin-bottom: 0.875rem;
+}
+
+.cil-gallery-title {
+  margin: 0;
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.cil-category-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem;
+}
+
+.cil-cat-btn {
+  padding: 0.25rem 0.55rem;
+  border-radius: 5px;
+  border: 1px solid transparent;
+  background: transparent;
+  color: var(--cil-text-secondary);
+  font-size: 0.75rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition:
+    color var(--cil-duration-fast) var(--cil-ease),
+    background-color var(--cil-duration-fast) var(--cil-ease),
+    border-color var(--cil-duration-fast) var(--cil-ease);
+}
+
+.cil-cat-btn:hover {
+  color: var(--cil-text-primary);
+}
+
+.cil-cat-btn--active {
+  color: var(--cil-text-primary);
+  background-color: var(--cil-surface-secondary);
+  border-color: var(--cil-border);
+}
+
+.cil-thumb-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+  gap: 0.625rem;
+}
+
+.cil-thumb-item {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  overflow: hidden;
+  border-radius: var(--cil-radius-sm);
+  border: 1px solid var(--cil-border);
+  background-color: var(--cil-bg-primary);
+  text-align: left;
+  cursor: pointer;
+  transition: border-color var(--cil-duration-fast) var(--cil-ease);
+}
+
+.cil-thumb-item:hover {
+  border-color: var(--cil-border-hover);
+}
+
+.cil-thumb-item--active {
+  border-color: var(--cil-white);
+}
+
+.cil-thumb-img {
+  width: 100%;
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  display: block;
+}
+
+.cil-thumb-meta {
+  display: flex;
+  flex-direction: column;
+  padding: 0.4rem 0.5rem;
+}
+
+.cil-thumb-name {
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--cil-text-primary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.cil-thumb-cat {
+  font-size: 0.6875rem;
+  color: var(--cil-text-muted);
+}

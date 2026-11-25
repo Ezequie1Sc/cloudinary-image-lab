@@ -1,0 +1,32 @@
+<section class="cil-url-panel cil-surface" aria-label="Generated transformation URL">
+  <div class="cil-url-header">
+    <h2 class="cil-url-title">{{ 'urlPreview.heading' | translate }}</h2>
+    <div class="cil-url-actions">
+      <cil-button variant="secondary" size="sm" (click)="copy()">
+        @if (copied()) {
+          <svg lucideCheck [size]="14" aria-hidden="true"></svg>
+          <span>{{ 'urlPreview.copied' | translate }}</span>
+        } @else {
+          <svg lucideCopy [size]="14" aria-hidden="true"></svg>
+          <span>{{ 'urlPreview.copy' | translate }}</span>
+        }
+      </cil-button>
+
+      <a
+        [href]="url()"
+        target="_blank"
+        rel="noopener noreferrer"
+        class="cil-url-open cil-focusable"
+      >
+        <svg lucideExternalLink [size]="14" aria-hidden="true"></svg>
+        <span>{{ 'urlPreview.open' | translate }}</span>
+      </a>
+    </div>
+  </div>
+
+  <div class="cil-url-box font-mono-tech">
+    @for (segment of segments(); track $index) {
+      <span [class.cil-url-token]="segment.isTransform">{{ segment.text }}</span>
+    }
+  </div>
+</section>

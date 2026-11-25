@@ -1,0 +1,62 @@
+.cil-control-group {
+  border: none;
+  margin: 0;
+  padding: 0;
+}
+
+.cil-control-legend {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.8125rem;
+  font-weight: 600;
+  color: var(--cil-text-primary);
+}
+
+.cil-control-token {
+  font-family: var(--cil-font-mono);
+  font-size: 0.75rem;
+  font-weight: 500;
+  color: var(--cil-text-secondary);
+}
+
+.cil-control-hint {
+  margin: 0.25rem 0 0.625rem;
+  font-size: 0.75rem;
+  color: var(--cil-text-muted);
+}
+
+.cil-option-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0.375rem;
+}
+
+.cil-option-btn {
+  height: 32px;
+  padding-inline: 0.5rem;
+  border-radius: var(--cil-radius-sm);
+  border: 1px solid var(--cil-border);
+  background-color: var(--cil-bg-primary);
+  color: var(--cil-text-secondary);
+  font-family: var(--cil-font-mono);
+  font-size: 0.75rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition:
+    background-color var(--cil-duration-fast) var(--cil-ease),
+    border-color var(--cil-duration-fast) var(--cil-ease),
+    color var(--cil-duration-fast) var(--cil-ease);
+}
+
+.cil-option-btn:hover {
+  border-color: var(--cil-border-hover);
+  color: var(--cil-text-primary);
+}
+
+.cil-option-btn--active {
+  background-color: var(--cil-white);
+  color: var(--cil-black);
+  border-color: var(--cil-white);
+}

@@ -1,0 +1,83 @@
+<section class="cil-comparator cil-surface" aria-label="Before and after image comparator">
+  @if (status() === 'error') {
+    <div class="cil-comparator-error" role="alert">
+      <svg lucideAlertTriangle [size]="22" class="cil-error-icon" aria-hidden="true"></svg>
+      <p class="cil-error-title">{{ 'comparison.errorTitle' | translate }}</p>
+      <p class="cil-error-desc">{{ (errorKey() ?? 'errors.networkError') | translate }}</p>
+      <cil-button variant="secondary" size="sm" (click)="retry.emit()">
+        <svg lucideRefreshCw [size]="14" aria-hidden="true"></svg>
+        <span>{{ 'comparison.errorRetry' | translate }}</span>
+      </cil-button>
+    </div>
+  } @else {
+    <div
+      #stage
+      class="cil-stage"
+      [style.aspect-ratio]="asset().aspectRatio"
+      (pointerdown)="onPointerDown($event)"
+      (pointermove)="onPointerMove($event)"
+      (pointerup)="onPointerUp()"
+      (pointercancel)="onPointerUp()"
+    >
+      <img
+        [src]="optimizedSrc()"
+        [alt]="altText()"
+        class="cil-stage-img cil-stage-img--optimized"
+        decoding="async"
+        draggable="false"
+      />
+
+      <div class="cil-original-layer" [style.clip-path]="clipPath()">
+        <img
+          [src]="originalSrc()"
+          [alt]="altText()"
+          class="cil-stage-img"
+          decoding="async"
+          draggable="false"
+        />
+      </div>
+
+      <span class="cil-badge cil-badge--left">
+        <span>{{ 'comparison.original' | translate }}</span>
+        @if (result()?.original?.formatLabel; as fmt) {
+          <span class="cil-badge-fmt">{{ fmt }}</span>
+        }
+      </span>
+
+      <span class="cil-badge cil-badge--right">
+        <span>{{ 'comparison.optimized' | translate }}</span>
+        @if (result()?.optimized?.formatLabel; as fmt) {
+          <span class="cil-badge-fmt">{{ fmt }}</span>
+        }
+      </span>
+
+      <div class="cil-divider" [style.left.%]="position()" aria-hidden="true"></div>
+
+      <div
+        class="cil-handle cil-focusable"
+        role="slider"
+        tabindex="0"
+        [style.left.%]="position()"
+        [attr.aria-label]="'comparison.sliderLabel' | translate"
+        [attr.aria-valuemin]="0"
+        [attr.aria-valuemax]="100"
+        [attr.aria-valuenow]="position()"
+        (keydown)="onSliderKeyDown($event)"
+      >
+        <svg lucideMoveHorizontal [size]="15" aria-hidden="true"></svg>
+      </div>
+
+      @if (status() === 'loading') {
+        <div class="cil-loading-overlay" aria-live="polite">
+          <cil-skeleton height="100%" width="100%" rounded="0px" />
+          <span class="cil-loading-pill">{{ 'comparison.loading' | translate }}</span>
+        </div>
+      }
+    </div>
+
+    <div class="cil-comparator-footer">
+      <span class="cil-comparator-note">{{ 'comparison.sameAssetNote' | translate }}</span>
+      <span class="cil-comparator-hint">{{ 'comparison.sliderHint' | translate }}</span>
+    </div>
+  }
+</section>

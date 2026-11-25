@@ -1,0 +1,60 @@
+.cil-toast-stack {
+  position: fixed;
+  right: 1rem;
+  bottom: 1rem;
+  z-index: 60;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  max-width: min(360px, calc(100vw - 2rem));
+}
+
+.cil-toast {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  padding: 0.625rem 0.75rem;
+  background-color: var(--cil-surface-secondary);
+  border: 1px solid var(--cil-border);
+  border-radius: var(--cil-radius-md);
+  color: var(--cil-text-primary);
+  font-size: 0.8125rem;
+}
+
+.cil-toast--success {
+  border-color: var(--cil-success-border);
+}
+
+.cil-toast--error {
+  border-color: var(--cil-error-border);
+}
+
+.cil-toast-icon--success {
+  color: var(--cil-success);
+  flex-shrink: 0;
+}
+
+.cil-toast-icon--error {
+  color: var(--cil-error);
+  flex-shrink: 0;
+}
+
+.cil-toast-text {
+  flex: 1;
+}
+
+.cil-toast-close {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border: none;
+  color: var(--cil-text-muted);
+  cursor: pointer;
+  padding: 0.25rem;
+  border-radius: 4px;
+}
+
+.cil-toast-close:hover {
+  color: var(--cil-text-primary);
+}
