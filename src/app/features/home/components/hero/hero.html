@@ -1,17 +1,36 @@
-<section class="cil-hero cil-subtle-grid">
+<section class="cil-hero">
+  <cil-dark-veil />
+
   <div class="cil-container cil-hero-inner">
-    <p class="cil-eyebrow cil-hero-eyebrow">{{ 'hero.eyebrow' | translate }}</p>
-    <h1 class="cil-hero-title">{{ 'hero.title' | translate }}</h1>
-    <p class="cil-hero-description">{{ 'hero.description' | translate }}</p>
+    <h1 class="cil-hero-title">
+      <span class="cil-hero-title-primary">
+        {{ 'hero.titlePrimary' | translate }}
+      </span>
+
+      <span class="cil-hero-title-secondary">
+        {{ 'hero.titleSecondary' | translate }}
+      </span>
+    </h1>
+
+    <p class="cil-hero-description">
+      {{ 'hero.description' | translate }}
+    </p>
 
     <div class="cil-hero-actions">
       <a routerLink="/lab" class="cil-hero-btn cil-hero-btn--primary cil-focusable">
-        <span>{{ 'hero.primaryCta' | translate }}</span>
-        <svg lucideArrowRight [size]="15" aria-hidden="true"></svg>
+        <span>
+          {{ 'hero.primaryCta' | translate }}
+        </span>
+
+        <svg lucideArrowRight [size]="16" aria-hidden="true" class="cil-hero-arrow"></svg>
       </a>
+
       <a routerLink="/docs" class="cil-hero-btn cil-hero-btn--secondary cil-focusable">
-        <svg lucideBookOpen [size]="15" aria-hidden="true"></svg>
-        <span>{{ 'hero.secondaryCta' | translate }}</span>
+        <svg lucideBookOpen [size]="16" aria-hidden="true"></svg>
+
+        <span>
+          {{ 'hero.secondaryCta' | translate }}
+        </span>
       </a>
     </div>
   </div>
