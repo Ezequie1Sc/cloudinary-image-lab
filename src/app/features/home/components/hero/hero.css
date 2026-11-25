@@ -1,81 +1,325 @@
+:host {
+  display: block;
+}
+
+/* ========================================
+   HERO LAYOUT
+======================================== */
+
 .cil-hero {
+  position: relative;
+  isolation: isolate;
+
+  display: grid;
+  place-items: center;
+
+  overflow: hidden;
+
+  min-height: 560px;
+
+  padding-block: 5rem;
+
+  background-color: #09090b;
+
   border-bottom: 1px solid var(--cil-border);
-  padding-block: 4rem 3.75rem;
 }
 
 .cil-hero-inner {
+  position: relative;
+  z-index: 2;
+
   display: flex;
   flex-direction: column;
   align-items: center;
+
+  width: 100%;
+  max-width: 900px;
+
+  margin-inline: auto;
+
   text-align: center;
-  max-width: 720px;
 }
 
-.cil-hero-eyebrow {
-  margin: 0 0 0.875rem;
-  padding: 0.25rem 0.65rem;
-  border: 1px solid var(--cil-border);
-  border-radius: 999px;
-  background-color: var(--cil-surface);
-}
+/* ========================================
+   TYPOGRAPHY
+======================================== */
 
 .cil-hero-title {
+  display: flex;
+  flex-direction: column;
+
   margin: 0;
-  font-size: clamp(2rem, 4.5vw, 3rem);
+
+  font-size: clamp(2.75rem, 6vw, 4.75rem);
   font-weight: 600;
-  letter-spacing: -0.03em;
-  line-height: 1.12;
-  color: var(--cil-text-primary);
+
+  letter-spacing: -0.065em;
+  line-height: 1.08;
+
+  animation: cil-hero-enter 700ms ease both;
+}
+
+.cil-hero-title-primary {
+  color: #fafafa;
+}
+
+.cil-hero-title-secondary {
+  color: #a1a1aa;
 }
 
 .cil-hero-description {
-  margin: 1rem 0 0;
-  font-size: 1rem;
-  color: var(--cil-text-secondary);
-  max-width: 56ch;
+  max-width: 44ch;
+
+  margin: 1.5rem 0 0;
+
+  font-size: clamp(0.95rem, 1.5vw, 1.1rem);
+  font-weight: 400;
+
+  line-height: 1.7;
+
+  text-wrap: balance;
+
+  color: #b4b4bb;
+
+  animation: cil-hero-enter 700ms 100ms ease both;
 }
+
+/* ========================================
+   ACTIONS
+======================================== */
 
 .cil-hero-actions {
   display: flex;
   flex-wrap: wrap;
+
+  align-items: center;
   justify-content: center;
+
   gap: 0.75rem;
-  margin-top: 1.75rem;
+
+  margin-top: 2rem;
+
+  animation: cil-hero-enter 700ms 200ms ease both;
 }
 
 .cil-hero-btn {
+  position: relative;
+
   display: inline-flex;
+
   align-items: center;
-  gap: 0.5rem;
-  height: 40px;
-  padding-inline: 1.125rem;
-  border-radius: var(--cil-radius-sm);
+  justify-content: center;
+
+  overflow: hidden;
+
+  gap: 0.625rem;
+
+  min-height: 46px;
+
+  padding: 0.75rem 1.25rem;
+
+  border: 1px solid transparent;
+
+  border-radius: var(--cil-radius-sm, 6px);
+
   font-size: 0.875rem;
   font-weight: 500;
+
   text-decoration: none;
+
+  cursor: pointer;
+
   transition:
-    background-color var(--cil-duration-fast) var(--cil-ease),
-    border-color var(--cil-duration-fast) var(--cil-ease);
+    background-color 200ms var(--cil-ease, ease),
+    border-color 200ms var(--cil-ease, ease),
+    box-shadow 250ms var(--cil-ease, ease),
+    transform 200ms var(--cil-ease, ease);
 }
 
+.cil-hero-btn:active {
+  transform: scale(0.97);
+}
+
+/* ========================================
+   PRIMARY BUTTON
+======================================== */
+
 .cil-hero-btn--primary {
-  background-color: var(--cil-white);
-  color: var(--cil-black);
-  border: 1px solid var(--cil-white);
+  color: #09090b;
+
+  background-color: #fafafa;
+
+  border-color: #fafafa;
 }
 
 .cil-hero-btn--primary:hover {
-  background-color: #e4e4e7;
-  border-color: #e4e4e7;
+  background-color: #ffffff;
+
+  border-color: #ffffff;
+
+  box-shadow:
+    0 0 24px #ffffff25,
+    0 0 48px #ffffff10;
 }
 
+.cil-hero-btn--primary:focus-visible {
+  box-shadow: 0 0 24px #ffffff25;
+}
+
+/* ========================================
+   SECONDARY BUTTON — INTERACTIVE REVEAL
+======================================== */
+
 .cil-hero-btn--secondary {
-  background-color: var(--cil-surface);
-  color: var(--cil-text-primary);
-  border: 1px solid var(--cil-border);
+  color: #fafafa;
+
+  background-color: #09090be6;
+
+  border-color: #52525b;
+}
+
+.cil-hero-btn--secondary::before {
+  position: absolute;
+
+  inset: 0;
+
+  content: '';
+
+  background: linear-gradient(115deg, transparent 15%, #ffffff18 50%, transparent 85%);
+
+  transform: translateX(-120%);
+
+  transition: transform 550ms ease;
+
+  pointer-events: none;
 }
 
 .cil-hero-btn--secondary:hover {
-  background-color: var(--cil-surface-secondary);
-  border-color: var(--cil-border-hover);
+  background-color: #18181b;
+
+  border-color: #a1a1aa;
+
+  box-shadow: 0 0 22px #ffffff0d;
+}
+
+.cil-hero-btn--secondary:hover::before {
+  transform: translateX(120%);
+}
+
+.cil-hero-btn--secondary:focus-visible {
+  border-color: #a1a1aa;
+}
+
+/* ========================================
+   ICON MICROINTERACTIONS
+======================================== */
+
+.cil-hero-arrow {
+  flex-shrink: 0;
+
+  transition: transform 200ms var(--cil-ease, ease);
+}
+
+.cil-hero-btn--primary:hover .cil-hero-arrow {
+  transform: translateX(4px);
+}
+
+.cil-hero-btn svg {
+  flex-shrink: 0;
+}
+
+/* ========================================
+   ENTRANCE ANIMATION
+======================================== */
+
+@keyframes cil-hero-enter {
+  from {
+    opacity: 0;
+
+    transform: translateY(12px);
+  }
+
+  to {
+    opacity: 1;
+
+    transform: translateY(0);
+  }
+}
+
+/* ========================================
+   TABLET
+======================================== */
+
+@media (max-width: 768px) {
+  .cil-hero {
+    min-height: 480px;
+
+    padding-block: 4rem;
+  }
+
+  .cil-hero-title {
+    letter-spacing: -0.05em;
+  }
+}
+
+/* ========================================
+   MOBILE
+======================================== */
+
+@media (max-width: 480px) {
+  .cil-hero {
+    min-height: 430px;
+
+    padding-block: 3rem;
+  }
+
+  .cil-hero-title {
+    font-size: clamp(2.25rem, 10vw, 3rem);
+  }
+
+  .cil-hero-description {
+    max-width: 30ch;
+
+    margin-top: 1.25rem;
+  }
+
+  .cil-hero-actions {
+    flex-direction: column;
+
+    width: 100%;
+    max-width: 300px;
+
+    margin-top: 1.75rem;
+  }
+
+  .cil-hero-btn {
+    width: 100%;
+  }
+}
+
+/* ========================================
+   ACCESSIBILITY — REDUCED MOTION
+======================================== */
+
+@media (prefers-reduced-motion: reduce) {
+  .cil-hero-title,
+  .cil-hero-description,
+  .cil-hero-actions {
+    animation: none;
+  }
+
+  .cil-hero-btn,
+  .cil-hero-arrow,
+  .cil-hero-btn--secondary::before {
+    transition: none;
+  }
+
+  .cil-hero-btn--secondary::before {
+    display: none;
+  }
+
+  .cil-hero-btn:active,
+  .cil-hero-btn--primary:hover .cil-hero-arrow {
+    transform: none;
+  }
 }
