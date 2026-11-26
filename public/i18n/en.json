@@ -255,6 +255,52 @@
         "title": "Performance Best Practices",
         "body": "Set explicit width and height attributes to prevent Cumulative Layout Shift (CLS), reserve loading='lazy' for off-screen images only, cache measured transformation results, and cancel stale requests when users adjust controls rapidly."
       }
+    },
+    "interactive": {
+      "code": {
+        "lines": "lines"
+      },
+      "pipeline": {
+        "eyebrow": "01 / MEDIA DELIVERY",
+        "title": "From source to screen",
+        "subtitle": "Explore how Cloudinary transforms and delivers images through an interactive delivery pipeline.",
+        "play": "Play animation",
+        "pause": "Pause animation",
+        "reset": "Reset pipeline",
+        "playing": "Animation playing",
+        "paused": "Animation paused",
+        "hint": "Select any stage to explore",
+        "step": "Step",
+        "progress": "Pipeline progress",
+        "stagesLabel": "Image delivery stages",
+        "example": "Technical example",
+        "stages": {
+          "source": {
+            "title": "Source image",
+            "caption": "Original asset",
+            "description": "The original image is stored in your Cloudinary product environment. It acts as the master asset from which transformed variants can be generated without modifying the original resource.",
+            "example": "Public ID: sample"
+          },
+          "transformation": {
+            "title": "Transformation",
+            "caption": "Resize and optimize",
+            "description": "Cloudinary processes the transformation parameters requested in the delivery URL. Dimensions, compression quality and output format can be adjusted dynamically according to the requirements of the application.",
+            "example": "c_limit,w_800/q_auto/f_auto"
+          },
+          "cdn": {
+            "title": "Cloudinary CDN",
+            "caption": "Cached delivery",
+            "description": "The transformed image can be cached and distributed through Cloudinary delivery infrastructure. Subsequent compatible requests can reuse cached variants, reducing the need for repeated transformation processing.",
+            "example": "res.cloudinary.com/demo/image/upload/"
+          },
+          "device": {
+            "title": "User device",
+            "caption": "Optimized image",
+            "description": "The browser receives the requested image representation. With appropriate dimensions, quality and format, the resulting asset may require less bandwidth while preserving suitable visual quality.",
+            "example": "Content-Type: image/webp (example)"
+          }
+        }
+      }
     }
   },
   "notifications": {
