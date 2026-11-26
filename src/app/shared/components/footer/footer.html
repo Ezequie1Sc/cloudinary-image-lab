@@ -1,49 +1,250 @@
-<footer class="cil-footer">
+<footer class="cil-footer" (pointermove)="onPointerMove($event)" (pointerleave)="onPointerLeave()">
+  <!-- Decorative background -->
+
+  <div class="cil-footer-background" aria-hidden="true">
+    <div class="cil-footer-ambient"></div>
+
+    <div class="cil-footer-grid"></div>
+
+    <div class="cil-footer-spotlight"></div>
+
+    <svg
+      class="cil-footer-waves"
+      xmlns="http://www.w3.org/2000/svg"
+      viewBox="0 0 1440 700"
+      preserveAspectRatio="xMidYMid slice"
+      focusable="false"
+      aria-hidden="true"
+    >
+      @for (path of wavePaths; track $index) {
+        <path
+          [attr.d]="path"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="0.8"
+          vector-effect="non-scaling-stroke"
+        ></path>
+      }
+    </svg>
+
+    <div class="cil-footer-vignette"></div>
+  </div>
+
   <div class="cil-container cil-footer-inner">
-    <div class="cil-footer-brand">
-      <div class="cil-footer-title-row">
-        <img
-          src="/assets/branding/logo-mark.svg"
-          width="20"
-          height="20"
-          alt=""
-          aria-hidden="true"
-        />
-        <span class="cil-footer-title">{{ 'footer.title' | translate }}</span>
+    <!-- Navigation -->
+
+    <div class="cil-footer-navigation">
+      <!-- Brand -->
+
+      <div class="cil-footer-brand">
+        <a routerLink="/" class="cil-footer-title-row cil-focusable">
+          <img
+            src="/assets/branding/logo-mark.svg"
+            width="30"
+            height="30"
+            alt=""
+            aria-hidden="true"
+          />
+
+          <span class="cil-footer-title">
+            {{ 'footer.title' | translate }}
+          </span>
+        </a>
+
+        <p class="cil-footer-brand-description">
+          {{ 'footer.brandDescription' | translate }}
+        </p>
+
+        <span class="cil-footer-open-source">
+          <span class="cil-footer-dot" aria-hidden="true"></span>
+
+          {{ 'footer.openSource' | translate }}
+        </span>
       </div>
-      <p class="cil-footer-meta">
-        {{ 'footer.builtWith' | translate }} · {{ 'footer.developerLabel' | translate }}
-        <strong class="cil-footer-dev">{{ developerName }}</strong>
-      </p>
+
+      <!-- Explore -->
+
+      <nav class="cil-footer-column" [attr.aria-label]="'footer.sections.explore' | translate">
+        <h3 class="cil-footer-column-title">
+          {{ 'footer.sections.explore' | translate }}
+        </h3>
+
+        <a routerLink="/" class="cil-footer-link cil-focusable">
+          {{ 'footer.links.home' | translate }}
+        </a>
+
+        <a routerLink="/image-lab" class="cil-footer-link cil-focusable">
+          {{ 'footer.links.imageLab' | translate }}
+        </a>
+
+        <a routerLink="/documentation" class="cil-footer-link cil-focusable">
+          {{ 'footer.links.documentation' | translate }}
+        </a>
+      </nav>
+
+      <!-- Technology -->
+
+      <nav class="cil-footer-column" [attr.aria-label]="'footer.sections.technology' | translate">
+        <h3 class="cil-footer-column-title">
+          {{ 'footer.sections.technology' | translate }}
+        </h3>
+
+        @for (technology of technologies; track technology.label) {
+          <a
+            [href]="technology.url"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="cil-footer-link cil-focusable"
+          >
+            <span>{{ technology.label }}</span>
+
+            <svg lucideExternalLink [size]="12" aria-hidden="true"></svg>
+          </a>
+        }
+      </nav>
+
+      <!-- Project -->
+
+      <nav class="cil-footer-column" [attr.aria-label]="'footer.sections.project' | translate">
+        <h3 class="cil-footer-column-title">
+          {{ 'footer.sections.project' | translate }}
+        </h3>
+
+        <a
+          [href]="repositoryUrl"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="cil-footer-link cil-focusable"
+        >
+          <span>
+            {{ 'footer.links.github' | translate }}
+          </span>
+
+          <svg lucideExternalLink [size]="12" aria-hidden="true"></svg>
+        </a>
+
+        <a
+          [href]="externalLinks.cloudinaryDocs"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="cil-footer-link cil-focusable"
+        >
+          <span>
+            {{ 'footer.links.cloudinaryDocs' | translate }}
+          </span>
+
+          <svg lucideExternalLink [size]="12" aria-hidden="true"></svg>
+        </a>
+
+        <a
+          [href]="externalLinks.devCommunity"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="cil-footer-link cil-focusable"
+        >
+          <span>
+            {{ 'footer.links.devCommunity' | translate }}
+          </span>
+
+          <svg lucideExternalLink [size]="12" aria-hidden="true"></svg>
+        </a>
+
+        <a
+          [href]="externalLinks.developerGithub"
+          target="_blank"
+          rel="noopener noreferrer"
+          class="cil-footer-link cil-focusable"
+        >
+          <span>
+            {{ 'footer.links.developer' | translate }}
+          </span>
+
+          <svg lucideExternalLink [size]="12" aria-hidden="true"></svg>
+        </a>
+      </nav>
     </div>
 
-    <div class="cil-footer-links">
+    <!-- Monumental wordmark -->
+
+    <div class="cil-footer-wordmark" aria-hidden="true">
+      <svg
+        class="cil-footer-wordmark-svg"
+        viewBox="0 0 1200 300"
+        xmlns="http://www.w3.org/2000/svg"
+        focusable="false"
+      >
+        <defs>
+          <linearGradient id="cil-footer-wordmark-gradient" x1="0" y1="0" x2="0" y2="1">
+            <stop offset="0%" stop-color="#fafafa"></stop>
+
+            <stop offset="100%" stop-color="#a1a1aa"></stop>
+          </linearGradient>
+        </defs>
+
+        <svg:text
+          [attr.x]="0"
+          [attr.y]="130"
+          [attr.font-size]="150"
+          [attr.textLength]="1200"
+          [attr.lengthAdjust]="'spacingAndGlyphs'"
+        >
+          CLOUDINARY
+        </svg:text>
+
+        <svg:text
+          [attr.x]="0"
+          [attr.y]="280"
+          [attr.font-size]="185"
+          [attr.textLength]="1200"
+          [attr.lengthAdjust]="'spacingAndGlyphs'"
+        >
+          IMAGE LAB
+        </svg:text>
+      </svg>
+    </div>
+
+    <!-- Bottom bar -->
+
+    <div class="cil-footer-bottom">
+      <p class="cil-footer-copyright">© {{ currentYear }} Cloudinary Image Lab</p>
+
       <a
         [href]="externalLinks.developerGithub"
         target="_blank"
         rel="noopener noreferrer"
-        class="cil-footer-link cil-focusable"
+        class="cil-footer-credit cil-focusable"
       >
-        <span>{{ 'footer.links.github' | translate }}</span>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="15"
+          height="15"
+          viewBox="0 0 24 24"
+          fill="currentColor"
+          aria-hidden="true"
+        >
+          <path
+            d="M12 .75a11.25 11.25 0 0 0-3.56 21.92c.56.1.77-.24.77-.54v-2.1c-3.13.68-3.79-1.33-3.79-1.33-.51-1.3-1.25-1.65-1.25-1.65-1.02-.7.08-.69.08-.69 1.13.08 1.72 1.16 1.72 1.16 1 .1 1.68 1.74 3.27.99.1-.73.39-1.23.71-1.51-2.5-.28-5.13-1.25-5.13-5.56 0-1.23.44-2.23 1.16-3.02-.12-.28-.5-1.43.11-2.98 0 0 .95-.3 3.1 1.15a10.8 10.8 0 0 1 5.64 0c2.15-1.46 3.1-1.15 3.1-1.15.61 1.55.23 2.7.11 2.98.72.79 1.16 1.79 1.16 3.02 0 4.32-2.63 5.28-5.14 5.56.4.35.76 1.04.76 2.1v3.03c0 .3.2.65.78.54A11.25 11.25 0 0 0 12 .75Z"
+          ></path>
+        </svg>
+
+        <span>
+          {{ 'footer.developerLabel' | translate }}
+
+          <strong>{{ developerName }}</strong>
+        </span>
+
         <svg lucideExternalLink [size]="12" aria-hidden="true"></svg>
       </a>
+
       <a
-        [href]="externalLinks.cloudinaryDocs"
+        [href]="repositoryUrl + '/blob/main/LICENSE'"
         target="_blank"
         rel="noopener noreferrer"
-        class="cil-footer-link cil-focusable"
+        class="cil-footer-license cil-focusable"
       >
-        <span>{{ 'footer.links.cloudinaryDocs' | translate }}</span>
-        <svg lucideExternalLink [size]="12" aria-hidden="true"></svg>
-      </a>
-      <a
-        [href]="externalLinks.devCommunity"
-        target="_blank"
-        rel="noopener noreferrer"
-        class="cil-footer-link cil-focusable"
-      >
-        <span>{{ 'footer.links.devCommunity' | translate }}</span>
-        <svg lucideExternalLink [size]="12" aria-hidden="true"></svg>
+        MIT License
+
+        <svg lucideExternalLink [size]="11" aria-hidden="true"></svg>
       </a>
     </div>
   </div>
