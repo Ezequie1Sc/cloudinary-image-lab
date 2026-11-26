@@ -1,25 +1,28 @@
 import { Injectable } from '@angular/core';
 
-import type { ThemedToken } from 'shiki';
+import type { HighlighterCore, ThemedToken } from 'shiki';
 
 export type SyntaxLanguage = 'typescript' | 'html' | 'text';
+
+const SYNTAX_THEME = 'dark-plus';
+const PLAIN_TEXT_COLOR = '#D4D4D4';
 
 @Injectable({
   providedIn: 'root',
 })
 export class SyntaxHighlighterService {
-  private highlighterPromise: ReturnType<typeof this.createHighlighter> | undefined;
+  private static highlighterPromise: Promise<HighlighterCore> | undefined;
 
-  private async createHighlighter() {
+  private async createHighlighter(): Promise<HighlighterCore> {
     const [
       { createHighlighterCore },
-      { createJavaScriptRegexEngine },
+      { createOnigurumaEngine },
       { default: darkPlus },
       { default: typescript },
       { default: html },
     ] = await Promise.all([
       import('shiki/core'),
-      import('shiki/engine/javascript'),
+      import('shiki/engine/oniguruma'),
       import('@shikijs/themes/dark-plus'),
       import('@shikijs/langs/typescript'),
       import('@shikijs/langs/html'),
@@ -27,23 +30,23 @@ export class SyntaxHighlighterService {
 
     return createHighlighterCore({
       themes: [darkPlus],
-
       langs: [typescript, html],
-
-      engine: createJavaScriptRegexEngine(),
+      engine: createOnigurumaEngine(import('shiki/wasm')),
     });
   }
 
-  private getHighlighter() {
-    if (!this.highlighterPromise) {
-      this.highlighterPromise = this.createHighlighter().catch((error: unknown) => {
-        this.highlighterPromise = undefined;
+  private getHighlighter(): Promise<HighlighterCore> {
+    if (!SyntaxHighlighterService.highlighterPromise) {
+      SyntaxHighlighterService.highlighterPromise = this.createHighlighter().catch(
+        (error: unknown) => {
+          SyntaxHighlighterService.highlighterPromise = undefined;
 
-        throw error;
-      });
+          throw error;
+        }
+      );
     }
 
-    return this.highlighterPromise;
+    return SyntaxHighlighterService.highlighterPromise;
   }
 
   async highlight(code: string, language: SyntaxLanguage): Promise<ThemedToken[][]> {
@@ -56,11 +59,13 @@ export class SyntaxHighlighterService {
 
       const result = highlighter.codeToTokens(code, {
         lang: language,
-        theme: 'dark-plus',
+        theme: SYNTAX_THEME,
       });
 
       return result.tokens;
-    } catch {
+    } catch (error: unknown) {
+      console.error(`[Cloudinary Image Lab] Syntax highlighting failed for ${language}:`, error);
+
       return this.createPlainTokens(code);
     }
   }
@@ -69,7 +74,7 @@ export class SyntaxHighlighterService {
     return code.split(/\r?\n/).map((line) => [
       {
         content: line,
-        color: '#D4D4D4',
+        color: PLAIN_TEXT_COLOR,
         offset: 0,
       },
     ]);

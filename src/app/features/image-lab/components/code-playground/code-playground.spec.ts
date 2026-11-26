@@ -1,11 +1,21 @@
+import { Blob as NodeBlob } from 'node:buffer';
+
 import { TestBed } from '@angular/core/testing';
 
-import { beforeEach, describe, expect, it } from 'vitest';
+import { afterAll, beforeAll, beforeEach, describe, expect, it, vi } from 'vitest';
 
 import { SyntaxHighlighterService } from './services/syntax-highlighter.service';
 
 describe('Code Playground syntax highlighting', () => {
   let service: SyntaxHighlighterService;
+
+  beforeAll(() => {
+    vi.stubGlobal('Blob', NodeBlob);
+  });
+
+  afterAll(() => {
+    vi.unstubAllGlobals();
+  });
 
   beforeEach(() => {
     TestBed.configureTestingModule({});
@@ -23,7 +33,6 @@ describe('Code Playground syntax highlighting', () => {
     const tokens = service.createPlainTokens(code);
 
     expect(tokens).toHaveLength(1);
-
     expect(tokens[0][0].content).toBe(code);
   });
 
@@ -33,11 +42,8 @@ describe('Code Playground syntax highlighting', () => {
     const tokens = service.createPlainTokens(code);
 
     expect(tokens).toHaveLength(3);
-
     expect(tokens[0][0].content).toBe('first line');
-
     expect(tokens[1][0].content).toBe('');
-
     expect(tokens[2][0].content).toBe('third line');
   });
 
@@ -47,7 +53,6 @@ describe('Code Playground syntax highlighting', () => {
     const tokens = await service.highlight(url, 'text');
 
     expect(tokens).toHaveLength(1);
-
     expect(tokens[0][0].content).toBe(url);
   });
 
@@ -63,7 +68,6 @@ describe('Code Playground syntax highlighting', () => {
     const colors = new Set(line.map((token) => token.color));
 
     expect(reconstructed).toBe(code);
-
     expect(colors.size).toBeGreaterThan(1);
   });
 
@@ -79,7 +83,6 @@ describe('Code Playground syntax highlighting', () => {
     const colors = new Set(line.map((token) => token.color));
 
     expect(reconstructed).toBe(code);
-
     expect(colors.size).toBeGreaterThan(1);
   });
 
