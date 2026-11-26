@@ -277,7 +277,18 @@
     "links": {
       "github": "GitHub",
       "cloudinaryDocs": "Cloudinary Documentation",
-      "devCommunity": "DEV Community"
+      "devCommunity": "DEV Community",
+      "home": "Home",
+      "imageLab": "Image Lab",
+      "documentation": "Documentation",
+      "developer": "Developer"
+    },
+    "brandDescription": "An open-source playground for exploring image transformations, intelligent optimization and modern web performance.",
+    "openSource": "Open source project",
+    "sections": {
+      "explore": "Explore",
+      "technology": "Technology",
+      "project": "Project"
     }
   },
   "accessibility": {
