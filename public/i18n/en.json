@@ -65,6 +65,16 @@
     "controlsHeading": "Transformation Controls",
     "workspaceHeading": "Visual Comparison & Metrics"
   },
+  "workbench": {
+    "developerTools": "Developer tools",
+    "developerToolsDescription": "Explore production-ready code, delivery URLs and responsive image strategies.",
+    "deliveryUrl": "Delivery URL",
+    "responsivePreview": "Responsive Preview",
+    "liveMetrics": "Measured results",
+    "perImageDelivery": "Per image delivery",
+    "relativeToOriginal": "Relative to original",
+    "sizeComparison": "File size comparison"
+  },
   "comparison": {
     "original": "Original",
     "optimized": "Optimized",
@@ -73,7 +83,21 @@
     "loading": "Loading image pair and measuring payloads...",
     "errorTitle": "Unable to load image comparison",
     "errorRetry": "Retry loading",
-    "sameAssetNote": "Both views render the exact same Cloudinary asset with and without transformations."
+    "sameAssetNote": "Both views render the exact same Cloudinary asset with and without transformations.",
+    "heading": "Image Comparison",
+    "modes": {
+      "slider": "Slider",
+      "sideBySide": "Side by Side"
+    },
+    "zoomIn": "Zoom in",
+    "zoomOut": "Zoom out",
+    "resetView": "Reset View",
+    "fullscreen": "Toggle fullscreen",
+    "fullscreenError": "Fullscreen is unavailable.",
+    "downloadOriginal": "Download Original",
+    "downloadOptimized": "Download Optimized",
+    "downloadSuccess": "Image download started.",
+    "downloadError": "Unable to download the image."
   },
   "transformations": {
     "format": {

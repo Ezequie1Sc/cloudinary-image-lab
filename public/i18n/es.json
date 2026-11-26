@@ -65,6 +65,16 @@
     "controlsHeading": "Controles de transformación",
     "workspaceHeading": "Comparación visual y métricas"
   },
+  "workbench": {
+    "developerTools": "Herramientas de desarrollo",
+    "developerToolsDescription": "Explora código listo para producción, URLs de entrega y estrategias de imágenes adaptables.",
+    "deliveryUrl": "URL de entrega",
+    "responsivePreview": "Vista adaptable",
+    "liveMetrics": "Resultados medidos",
+    "perImageDelivery": "Por cada imagen entregada",
+    "relativeToOriginal": "Respecto a la original",
+    "sizeComparison": "Comparación del tamaño de archivos"
+  },
   "comparison": {
     "original": "Original",
     "optimized": "Optimizada",
@@ -73,7 +83,21 @@
     "loading": "Cargando imágenes y midiendo tamaños reales...",
     "errorTitle": "No se pudo cargar la comparación de imágenes",
     "errorRetry": "Reintentar carga",
-    "sameAssetNote": "Ambas vistas renderizan exactamente el mismo recurso de Cloudinary con y sin transformaciones."
+    "sameAssetNote": "Ambas vistas renderizan exactamente el mismo recurso de Cloudinary con y sin transformaciones.",
+    "heading": "Comparaci?n de im?genes",
+    "modes": {
+      "slider": "Deslizador",
+      "sideBySide": "Lado a lado"
+    },
+    "zoomIn": "Acercar",
+    "zoomOut": "Alejar",
+    "resetView": "Restablecer vista",
+    "fullscreen": "Alternar pantalla completa",
+    "fullscreenError": "La pantalla completa no est? disponible.",
+    "downloadOriginal": "Descargar original",
+    "downloadOptimized": "Descargar optimizada",
+    "downloadSuccess": "Descarga de imagen iniciada.",
+    "downloadError": "No se pudo descargar la imagen."
   },
   "transformations": {
     "format": {

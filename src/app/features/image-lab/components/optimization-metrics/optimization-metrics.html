@@ -1,108 +1,271 @@
-<section class="cil-metrics cil-surface" aria-label="Optimization metrics">
-  <div class="cil-metrics-header">
+<section
+  class="cil-metrics"
+  [attr.aria-label]="'metrics.heading' | translate"
+  [attr.aria-busy]="status() === 'loading'"
+>
+  <header class="cil-metrics-header">
     <div>
-      <h2 class="cil-metrics-title">{{ 'metrics.heading' | translate }}</h2>
-      <p class="cil-metrics-subtitle">{{ 'metrics.subheading' | translate }}</p>
+      <h2 class="cil-metrics-title">
+        {{ 'metrics.heading' | translate }}
+      </h2>
+
+      <p class="cil-metrics-subtitle">
+        {{ 'metrics.subheading' | translate }}
+      </p>
     </div>
+
     @if (status() === 'loading') {
-      <span class="cil-metrics-status font-mono-tech">{{ 'metrics.measuring' | translate }}</span>
+      <span class="cil-metrics-status" role="status">
+        <span class="cil-status-dot cil-status-dot--loading"></span>
+
+        {{ 'metrics.measuring' | translate }}
+      </span>
+    } @else if (status() === 'ready') {
+      <span class="cil-metrics-status">
+        <span class="cil-status-dot"></span>
+
+        {{ 'workbench.liveMetrics' | translate }}
+      </span>
     }
-  </div>
+  </header>
 
   <div class="cil-metrics-primary-grid">
-    <div class="cil-metric-cell">
-      <span class="cil-metric-label">{{ 'metrics.originalSize' | translate }}</span>
+    <!-- ORIGINAL SIZE -->
+
+    <article class="cil-metric-card">
+      <div class="cil-metric-card-header">
+        <span class="cil-metric-label">
+          {{ 'metrics.originalSize' | translate }}
+        </span>
+
+        <svg
+          lucideImage
+          [size]="17"
+          aria-hidden="true"
+        ></svg>
+      </div>
+
       @if (status() === 'loading') {
-        <cil-skeleton height="24px" width="84px" />
+        <cil-skeleton height="32px" width="100px" />
       } @else {
         <span class="cil-metric-value font-mono-tech">
           {{ originalSize() ?? ('metrics.unavailable' | translate) }}
         </span>
       }
-    </div>
 
-    <div class="cil-metric-cell">
-      <span class="cil-metric-label">{{ 'metrics.optimizedSize' | translate }}</span>
+      <div class="cil-metric-detail">
+        <span>
+          {{ currentResult()?.original?.formatLabel ?? '—' }}
+        </span>
+
+        <span class="cil-detail-separator">·</span>
+
+        <span>{{ originalDimensions() ?? '—' }}</span>
+      </div>
+    </article>
+
+    <!-- OPTIMIZED SIZE -->
+
+    <article class="cil-metric-card">
+      <div class="cil-metric-card-header">
+        <span class="cil-metric-label">
+          {{ 'metrics.optimizedSize' | translate }}
+        </span>
+
+        <svg
+          lucideFileImage
+          [size]="17"
+          aria-hidden="true"
+        ></svg>
+      </div>
+
       @if (status() === 'loading') {
-        <cil-skeleton height="24px" width="84px" />
+        <cil-skeleton height="32px" width="100px" />
       } @else {
         <span class="cil-metric-value font-mono-tech">
           {{ optimizedSize() ?? ('metrics.unavailable' | translate) }}
         </span>
       }
-    </div>
 
-    <div class="cil-metric-cell">
-      <span class="cil-metric-label">{{ 'metrics.bytesSaved' | translate }}</span>
+      <div class="cil-metric-detail">
+        <span>
+          {{ currentResult()?.optimized?.formatLabel ?? '—' }}
+        </span>
+
+        <span class="cil-detail-separator">·</span>
+
+        <span>{{ optimizedDimensions() ?? '—' }}</span>
+      </div>
+    </article>
+
+    <!-- BYTES SAVED -->
+
+    <article class="cil-metric-card">
+      <div class="cil-metric-card-header">
+        <span class="cil-metric-label">
+          {{ 'metrics.bytesSaved' | translate }}
+        </span>
+
+        <svg
+          lucideHardDrive
+          [size]="17"
+          aria-hidden="true"
+        ></svg>
+      </div>
+
       @if (status() === 'loading') {
-        <cil-skeleton height="24px" width="84px" />
+        <cil-skeleton height="32px" width="100px" />
       } @else {
         <span
           class="cil-metric-value font-mono-tech"
           [class.cil-metric-value--positive]="isPositiveReduction()"
-          [class.cil-metric-value--negative]="result()?.isHeavier"
+          [class.cil-metric-value--negative]="isHeavier()"
         >
           {{ bytesSavedLabel() ?? ('metrics.unavailable' | translate) }}
         </span>
       }
-    </div>
 
-    <div class="cil-metric-cell">
-      <span class="cil-metric-label">{{ 'metrics.reduction' | translate }}</span>
+      <div class="cil-metric-detail">
+        {{ 'workbench.perImageDelivery' | translate }}
+      </div>
+    </article>
+
+    <!-- REDUCTION -->
+
+    <article class="cil-metric-card">
+      <div class="cil-metric-card-header">
+        <span class="cil-metric-label">
+          {{ 'metrics.reduction' | translate }}
+        </span>
+
+        <svg
+          lucideTrendingDown
+          [size]="17"
+          aria-hidden="true"
+        ></svg>
+      </div>
+
       @if (status() === 'loading') {
-        <cil-skeleton height="24px" width="70px" />
+        <cil-skeleton height="32px" width="90px" />
       } @else {
         <span
           class="cil-metric-value font-mono-tech"
           [class.cil-metric-value--positive]="isPositiveReduction()"
-          [class.cil-metric-value--negative]="result()?.isHeavier"
+          [class.cil-metric-value--negative]="isHeavier()"
         >
           {{ reductionLabel() ?? ('metrics.unavailable' | translate) }}
         </span>
       }
-    </div>
+
+      <div class="cil-metric-detail">
+        {{ 'workbench.relativeToOriginal' | translate }}
+      </div>
+    </article>
   </div>
 
-  <div class="cil-metrics-secondary-grid">
-    <div class="cil-metric-row">
-      <span class="cil-metric-label">{{ 'metrics.originalDimensions' | translate }}</span>
-      <span class="cil-metric-subvalue font-mono-tech">
-        {{ originalDimensions() ?? ('metrics.unavailable' | translate) }}
-      </span>
-    </div>
-    <div class="cil-metric-row">
-      <span class="cil-metric-label">{{ 'metrics.optimizedDimensions' | translate }}</span>
-      <span class="cil-metric-subvalue font-mono-tech">
-        {{ optimizedDimensions() ?? ('metrics.unavailable' | translate) }}
-      </span>
-    </div>
-    <div class="cil-metric-row">
-      <span class="cil-metric-label">{{ 'metrics.originalFormat' | translate }}</span>
-      <span class="cil-metric-subvalue font-mono-tech">
-        {{ result()?.original?.formatLabel ?? ('metrics.unavailable' | translate) }}
-      </span>
-    </div>
-    <div class="cil-metric-row">
-      <span class="cil-metric-label">{{ 'metrics.optimizedFormat' | translate }}</span>
-      <span class="cil-metric-subvalue font-mono-tech">
-        {{ result()?.optimized?.formatLabel ?? ('metrics.unavailable' | translate) }}
-      </span>
-    </div>
+  <!-- SIZE COMPARISON -->
+
+  <div class="cil-metrics-comparison">
+    <h3 class="cil-comparison-title">
+      {{ 'workbench.sizeComparison' | translate }}
+    </h3>
+
+    @if (status() === 'loading') {
+      <cil-skeleton height="8px" width="100%" />
+      <cil-skeleton height="8px" width="65%" />
+    } @else if (hasComparableSizes()) {
+      <div class="cil-comparison-row">
+        <div class="cil-comparison-label">
+          <span>{{ 'metrics.originalSize' | translate }}</span>
+
+          <span class="font-mono-tech">
+            {{ originalSize() }}
+          </span>
+        </div>
+
+        <div class="cil-comparison-track" aria-hidden="true">
+          <div
+            class="cil-comparison-bar cil-comparison-bar--original"
+            [style.width.%]="originalBarWidth()"
+          ></div>
+        </div>
+      </div>
+
+      <div class="cil-comparison-row">
+        <div class="cil-comparison-label">
+          <span>{{ 'metrics.optimizedSize' | translate }}</span>
+
+          <span class="font-mono-tech">
+            {{ optimizedSize() }}
+          </span>
+        </div>
+
+        <div class="cil-comparison-track" aria-hidden="true">
+          <div
+            class="cil-comparison-bar"
+            [class.cil-comparison-bar--positive]="isPositiveReduction()"
+            [class.cil-comparison-bar--negative]="isHeavier()"
+            [style.width.%]="optimizedBarWidth()"
+          ></div>
+        </div>
+      </div>
+    } @else {
+      <p class="cil-metrics-unavailable">
+        {{ 'metrics.unavailable' | translate }}
+      </p>
+    }
   </div>
 
-  @if (result()?.isHeavier) {
+  <!-- WARNING -->
+
+  @if (isHeavier()) {
     <div class="cil-metrics-alert" role="status">
-      <svg lucideAlertTriangle [size]="15" aria-hidden="true"></svg>
-      <span>{{ 'metrics.heavierWarning' | translate }}</span>
+      <svg
+        lucideAlertTriangle
+        [size]="16"
+        aria-hidden="true"
+      ></svg>
+
+      <span>
+        {{ 'metrics.heavierWarning' | translate }}
+      </span>
     </div>
   }
 
+  @if (status() === 'error') {
+    <div class="cil-metrics-alert" role="status">
+      <svg
+        lucideAlertTriangle
+        [size]="16"
+        aria-hidden="true"
+      ></svg>
+
+      <span>
+        {{ 'errors.networkError' | translate }}
+      </span>
+    </div>
+  }
+
+  <!-- MEASUREMENT INFORMATION -->
+
   <div class="cil-metrics-footnote">
-    <svg lucideInfo [size]="14" class="cil-footnote-icon" aria-hidden="true"></svg>
+    <svg
+      lucideInfo
+      [size]="15"
+      aria-hidden="true"
+    ></svg>
+
     <span>
       {{ 'metrics.corsNote' | translate }}
-      @if (result(); as res) {
-        {{ (res.includesResizing ? 'metrics.resizeNote' : 'metrics.compressionOnlyNote') | translate }}
+
+      @if (currentResult(); as res) {
+        {{
+          (
+            res.includesResizing
+              ? 'metrics.resizeNote'
+              : 'metrics.compressionOnlyNote'
+          ) | translate
+        }}
       }
     </span>
   </div>
