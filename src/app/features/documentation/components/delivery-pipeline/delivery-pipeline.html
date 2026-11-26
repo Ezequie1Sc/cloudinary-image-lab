@@ -1,0 +1,213 @@
+<section
+  class="cil-pipeline"
+  [class.cil-pipeline--playing]="isPlaying()"
+  [class.cil-pipeline--reduced]="reducedMotion()"
+  [attr.aria-label]="'documentation.interactive.pipeline.title' | translate"
+>
+  <div class="cil-pipeline-background" aria-hidden="true"></div>
+
+  <header class="cil-pipeline-header">
+    <div class="cil-pipeline-heading">
+      <div class="cil-pipeline-eyebrow">
+        <span class="cil-pipeline-status-dot"></span>
+
+        {{ 'documentation.interactive.pipeline.eyebrow' | translate }}
+      </div>
+
+      <h3 class="cil-pipeline-title">
+        {{ 'documentation.interactive.pipeline.title' | translate }}
+      </h3>
+
+      <p class="cil-pipeline-subtitle">
+        {{ 'documentation.interactive.pipeline.subtitle' | translate }}
+      </p>
+    </div>
+
+    <div class="cil-pipeline-actions">
+      <button
+        type="button"
+        class="cil-pipeline-action cil-focusable"
+        [disabled]="reducedMotion()"
+        [attr.aria-label]="
+          (isPlaying()
+            ? 'documentation.interactive.pipeline.pause'
+            : 'documentation.interactive.pipeline.play'
+          ) | translate
+        "
+        [attr.title]="
+          (isPlaying()
+            ? 'documentation.interactive.pipeline.pause'
+            : 'documentation.interactive.pipeline.play'
+          ) | translate
+        "
+        (click)="togglePlayback()"
+      >
+        @if (isPlaying()) {
+          <svg lucidePause [size]="15" aria-hidden="true"></svg>
+        } @else {
+          <svg lucidePlay [size]="15" aria-hidden="true"></svg>
+        }
+      </button>
+
+      <button
+        type="button"
+        class="cil-pipeline-action cil-focusable"
+        [attr.aria-label]="'documentation.interactive.pipeline.reset' | translate"
+        [attr.title]="'documentation.interactive.pipeline.reset' | translate"
+        (click)="resetPipeline()"
+      >
+        <svg lucideRotateCcw [size]="15" aria-hidden="true"></svg>
+      </button>
+    </div>
+  </header>
+
+  <div class="cil-pipeline-canvas">
+    <div
+      class="cil-pipeline-flow"
+      role="group"
+      [attr.aria-label]="'documentation.interactive.pipeline.stagesLabel' | translate"
+    >
+      @for (stage of stages; track stage.id; let i = $index) {
+        <button
+          type="button"
+          class="cil-pipeline-node cil-focusable"
+          [class.cil-pipeline-node--active]="activeIndex() === i"
+          [class.cil-pipeline-node--visited]="activeIndex() > i"
+          [attr.aria-pressed]="activeIndex() === i"
+          (click)="selectStage(i)"
+        >
+          <span class="cil-pipeline-node-number">
+            {{ stage.number }}
+          </span>
+
+          <span class="cil-pipeline-node-icon" aria-hidden="true">
+            @switch (stage.id) {
+              @case ('source') {
+                <svg lucideImage [size]="25"></svg>
+              }
+
+              @case ('transformation') {
+                <svg lucideSlidersHorizontal [size]="25"></svg>
+              }
+
+              @case ('cdn') {
+                <svg lucideCloud [size]="25"></svg>
+              }
+
+              @case ('device') {
+                <svg lucideMonitor [size]="25"></svg>
+              }
+            }
+          </span>
+
+          <span class="cil-pipeline-node-title">
+            {{ 'documentation.interactive.pipeline.stages.' + stage.id + '.title' | translate }}
+          </span>
+
+          <span class="cil-pipeline-node-caption">
+            {{ 'documentation.interactive.pipeline.stages.' + stage.id + '.caption' | translate }}
+          </span>
+
+          <span class="cil-pipeline-node-indicator" aria-hidden="true"></span>
+        </button>
+
+        @if (!$last) {
+          <div
+            class="cil-pipeline-connector"
+            [class.cil-pipeline-connector--active]="activeIndex() === i"
+            [class.cil-pipeline-connector--visited]="activeIndex() > i"
+            aria-hidden="true"
+          >
+            <svg class="cil-pipeline-connection-svg" viewBox="0 0 60 24" preserveAspectRatio="none">
+              <path class="cil-pipeline-connection-track" d="M 0 12 H 60" pathLength="100" />
+
+              <path class="cil-pipeline-connection-beam" d="M 0 12 H 60" pathLength="100" />
+            </svg>
+
+            <span class="cil-pipeline-particle"></span>
+
+            <span class="cil-pipeline-particle cil-pipeline-particle--secondary"></span>
+          </div>
+        }
+      }
+    </div>
+  </div>
+
+  <div class="cil-pipeline-progress">
+    <div class="cil-pipeline-progress-header">
+      <span>
+        {{ 'documentation.interactive.pipeline.step' | translate }}
+        {{ activeIndex() + 1 }} / {{ stages.length }}
+      </span>
+
+      <span> {{ progress() | number: '1.0-0' }}% </span>
+    </div>
+
+    <div
+      class="cil-pipeline-progress-track"
+      role="progressbar"
+      [attr.aria-label]="'documentation.interactive.pipeline.progress' | translate"
+      [attr.aria-valuenow]="progress()"
+      aria-valuemin="0"
+      aria-valuemax="100"
+    >
+      <div class="cil-pipeline-progress-fill" [style.width.%]="progress()"></div>
+    </div>
+  </div>
+
+  <div class="cil-pipeline-details">
+    @for (stage of [activeStage()]; track stage.id) {
+      <div class="cil-pipeline-detail-content">
+        <div class="cil-pipeline-detail-header">
+          <span class="cil-pipeline-detail-number">
+            {{ stage.number }}
+          </span>
+
+          <div class="cil-pipeline-detail-heading">
+            <h4>
+              {{ 'documentation.interactive.pipeline.stages.' + stage.id + '.title' | translate }}
+            </h4>
+
+            <span class="cil-pipeline-technical-label">
+              {{ stage.technicalLabel }}
+            </span>
+          </div>
+        </div>
+
+        <p class="cil-pipeline-detail-description">
+          {{ 'documentation.interactive.pipeline.stages.' + stage.id + '.description' | translate }}
+        </p>
+
+        <div class="cil-pipeline-detail-example">
+          <span class="cil-pipeline-example-label">
+            {{ 'documentation.interactive.pipeline.example' | translate }}
+          </span>
+
+          <code>
+            {{ 'documentation.interactive.pipeline.stages.' + stage.id + '.example' | translate }}
+          </code>
+        </div>
+      </div>
+    }
+  </div>
+
+  <footer class="cil-pipeline-footer">
+    <span class="cil-pipeline-footer-status">
+      <span
+        class="cil-pipeline-footer-dot"
+        [class.cil-pipeline-footer-dot--playing]="isPlaying()"
+      ></span>
+
+      {{
+        (isPlaying()
+          ? 'documentation.interactive.pipeline.playing'
+          : 'documentation.interactive.pipeline.paused'
+        ) | translate
+      }}
+    </span>
+
+    <span class="cil-pipeline-footer-hint">
+      {{ 'documentation.interactive.pipeline.hint' | translate }}
+    </span>
+  </footer>
+</section>

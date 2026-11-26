@@ -1,0 +1,191 @@
+:host {
+  display: block;
+  min-width: 0;
+  margin-top: 1.5rem;
+}
+
+.cil-doc-editor {
+  overflow: hidden;
+  border: 1px solid #262626;
+  border-radius: 12px;
+  background: #0c0c0c;
+  color: #fafafa;
+  transition: border-color 180ms ease;
+}
+
+.cil-doc-editor:hover {
+  border-color: #404040;
+}
+
+.cil-doc-editor-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  min-height: 48px;
+  padding: 0.625rem 0.875rem;
+  border-bottom: 1px solid #262626;
+  background: #111111;
+}
+
+.cil-doc-editor-file {
+  display: flex;
+  align-items: center;
+  gap: 0.625rem;
+  min-width: 0;
+}
+
+.cil-doc-file-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 26px;
+  height: 23px;
+  padding: 0 0.3rem;
+  border: 1px solid #333333;
+  border-radius: 5px;
+  background: #1a1a1a;
+  color: #d4d4d4;
+  font-family: var(--cil-font-mono, monospace);
+  font-size: 0.625rem;
+  font-weight: 600;
+}
+
+.cil-doc-file-name {
+  overflow: hidden;
+  color: #a1a1aa;
+  font-family: var(--cil-font-mono, monospace);
+  font-size: 0.75rem;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+
+.cil-doc-copy {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  gap: 0.4rem;
+  padding: 0.4rem 0.625rem;
+  border: 1px solid transparent;
+  border-radius: 6px;
+  background: transparent;
+  color: #a1a1aa;
+  font: inherit;
+  font-size: 0.75rem;
+  cursor: pointer;
+  transition:
+    color 160ms ease,
+    background 160ms ease,
+    border-color 160ms ease;
+}
+
+.cil-doc-copy:hover {
+  border-color: #333333;
+  background: #1a1a1a;
+  color: #fafafa;
+}
+
+.cil-doc-copy--success {
+  color: #fafafa;
+}
+
+.cil-doc-editor-viewport {
+  max-width: 100%;
+  overflow-x: auto;
+  scrollbar-width: thin;
+  scrollbar-color: #404040 transparent;
+}
+
+.cil-doc-editor-viewport:focus-visible {
+  outline: 1px solid #737373;
+  outline-offset: -2px;
+}
+
+.cil-doc-code {
+  width: max-content;
+  min-width: 100%;
+  margin: 0;
+  padding: 1.125rem 1rem 1.125rem 0;
+  font-family: var(--cil-font-mono, monospace);
+  font-size: 0.8125rem;
+  font-weight: 400;
+  line-height: 1.8;
+  tab-size: 2;
+}
+
+.cil-doc-code code {
+  font: inherit;
+}
+
+.cil-doc-code-line {
+  display: flex;
+  min-height: 1.8em;
+}
+
+.cil-doc-line-number {
+  flex-shrink: 0;
+  width: 3.25rem;
+  padding-right: 1rem;
+  color: #666666;
+  text-align: right;
+  user-select: none;
+}
+
+.cil-doc-line-content {
+  display: block;
+  white-space: pre;
+}
+
+.cil-doc-editor-statusbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 0.75rem;
+  padding: 0.625rem 0.875rem;
+  border-top: 1px solid #262626;
+  background: #111111;
+  color: #a1a1aa;
+  font-family: var(--cil-font-mono, monospace);
+  font-size: 0.6875rem;
+}
+
+.cil-doc-status-group {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.cil-doc-status-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #a3a3a3;
+}
+
+@media (max-width: 480px) {
+  .cil-doc-editor-toolbar {
+    padding-inline: 0.625rem;
+  }
+
+  .cil-doc-code {
+    font-size: 0.75rem;
+  }
+
+  .cil-doc-line-number {
+    width: 2.5rem;
+    padding-right: 0.75rem;
+  }
+
+  .cil-doc-editor-statusbar {
+    padding-inline: 0.625rem;
+    font-size: 0.625rem;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cil-doc-editor,
+  .cil-doc-copy {
+    transition: none;
+  }
+}

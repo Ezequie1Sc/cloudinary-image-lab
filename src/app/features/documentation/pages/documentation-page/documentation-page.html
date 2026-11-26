@@ -5,9 +5,17 @@
 
   <article class="cil-docs-content">
     <header class="cil-docs-header">
-      <p class="cil-eyebrow">{{ 'documentation.eyebrow' | translate }}</p>
-      <h1 class="cil-docs-title">{{ 'documentation.title' | translate }}</h1>
-      <p class="cil-docs-subtitle">{{ 'documentation.subtitle' | translate }}</p>
+      <p class="cil-eyebrow">
+        {{ 'documentation.eyebrow' | translate }}
+      </p>
+
+      <h1 class="cil-docs-title">
+        {{ 'documentation.title' | translate }}
+      </h1>
+
+      <p class="cil-docs-subtitle">
+        {{ 'documentation.subtitle' | translate }}
+      </p>
 
       <div class="cil-docs-links">
         <a
@@ -17,35 +25,80 @@
           class="cil-docs-ext-link cil-focusable"
         >
           <span>Cloudinary Angular SDK</span>
-          <svg lucideExternalLink [size]="13" aria-hidden="true"></svg>
+
+          <svg
+            lucideExternalLink
+            [size]="13"
+            aria-hidden="true"
+          ></svg>
         </a>
+
         <a
           [href]="externalLinks.cloudinaryOptimization"
           target="_blank"
           rel="noopener noreferrer"
           class="cil-docs-ext-link cil-focusable"
         >
-          <span>{{ 'documentation.officialDocs' | translate }}</span>
-          <svg lucideExternalLink [size]="13" aria-hidden="true"></svg>
+          <span>
+            {{ 'documentation.officialDocs' | translate }}
+          </span>
+
+          <svg
+            lucideExternalLink
+            [size]="13"
+            aria-hidden="true"
+          ></svg>
         </a>
       </div>
     </header>
 
     @for (section of sections; track section.id) {
-      <section [id]="section.id" class="cil-doc-section">
+      <section
+        [id]="section.id"
+        class="cil-doc-section"
+      >
         <h2 class="cil-doc-h2">
-          {{ 'documentation.sections.' + section.key + '.title' | translate }}
+          {{
+            'documentation.sections.' +
+              section.key +
+              '.title' | translate
+          }}
         </h2>
+
         <p class="cil-doc-p">
-          {{ 'documentation.sections.' + section.key + '.body' | translate }}
+          {{
+            'documentation.sections.' +
+              section.key +
+              '.body' | translate
+          }}
         </p>
 
-        @if (section.key === 'angularIntegration') {
-          <pre class="cil-doc-code"><code>{{ angularSetupSnippet }}</code></pre>
-        }
+        @switch (section.key) {
+          @case ('whatIsCloudinary') {
+            <cil-delivery-pipeline />
+          }
 
-        @if (section.key === 'responsive') {
-          <pre class="cil-doc-code"><code>{{ responsiveSnippet }}</code></pre>
+          @case ('angularIntegration') {
+            <cil-doc-code-block
+              [code]="installSnippet"
+              language="text"
+              fileName="terminal"
+            />
+
+            <cil-doc-code-block
+              [code]="angularSetupSnippet"
+              language="typescript"
+              fileName="cloudinary.ts"
+            />
+          }
+
+          @case ('responsive') {
+            <cil-doc-code-block
+              [code]="responsiveSnippet"
+              language="html"
+              fileName="responsive-image.html"
+            />
+          }
         }
       </section>
     }

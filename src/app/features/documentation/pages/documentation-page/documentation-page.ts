@@ -1,13 +1,33 @@
-import { ChangeDetectionStrategy, Component } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+} from '@angular/core';
+
 import { LucideExternalLink } from '@lucide/angular';
+
 import { EXTERNAL_LINKS } from '../../../../core/constants/external-links.constant';
+
 import { TranslatePipe } from '../../../../shared/pipes/translate.pipe';
-import { DocSidebarComponent, type DocSectionItem } from '../../components/doc-sidebar/doc-sidebar';
+
+import {
+  DocSidebarComponent,
+  type DocSectionItem,
+} from '../../components/doc-sidebar/doc-sidebar';
+
+import { DocCodeBlockComponent } from '../../components/doc-code-block/doc-code-block';
+
+import { DeliveryPipelineComponent } from '../../components/delivery-pipeline/delivery-pipeline';
 
 @Component({
   selector: 'cil-documentation-page',
   standalone: true,
-  imports: [LucideExternalLink, TranslatePipe, DocSidebarComponent],
+  imports: [
+    LucideExternalLink,
+    TranslatePipe,
+    DocSidebarComponent,
+    DocCodeBlockComponent,
+    DeliveryPipelineComponent,
+  ],
   templateUrl: './documentation-page.html',
   styleUrl: './documentation-page.css',
   changeDetection: ChangeDetectionStrategy.OnPush,
@@ -31,13 +51,21 @@ export class DocumentationPageComponent {
     { id: 'performance', key: 'performance' },
   ];
 
+  protected readonly installSnippet =
+    'pnpm add @cloudinary/url-gen @cloudinary/ng';
+
   protected readonly angularSetupSnippet = `import { Cloudinary } from '@cloudinary/url-gen';
 import { limitFit } from '@cloudinary/url-gen/actions/resize';
 import { format, quality } from '@cloudinary/url-gen/actions/delivery';
 import { auto as autoFormat } from '@cloudinary/url-gen/qualifiers/format';
 import { auto as autoQuality } from '@cloudinary/url-gen/qualifiers/quality';
 
-const cld = new Cloudinary({ cloud: { cloudName: 'demo' } });
+const cld = new Cloudinary({
+  cloud: {
+    cloudName: 'demo',
+  },
+});
+
 const image = cld
   .image('sample')
   .resize(limitFit().width(800))

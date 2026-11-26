@@ -1,0 +1,53 @@
+<div class="cil-doc-editor">
+  <div class="cil-doc-editor-toolbar">
+    <div class="cil-doc-editor-file">
+      <span class="cil-doc-file-icon" aria-hidden="true">
+        {{ fileExtension() }}
+      </span>
+
+      <span class="cil-doc-file-name">
+        {{ fileName() }}
+      </span>
+    </div>
+
+    <button
+      type="button"
+      class="cil-doc-copy cil-focusable"
+      [class.cil-doc-copy--success]="copied()"
+      (click)="copyCode()"
+    >
+      @if (copied()) {
+        <svg lucideCheck [size]="14" aria-hidden="true"></svg>
+
+        <span>{{ 'codePlayground.copied' | translate }}</span>
+      } @else {
+        <svg lucideCopy [size]="14" aria-hidden="true"></svg>
+
+        <span>{{ 'codePlayground.copy' | translate }}</span>
+      }
+    </button>
+  </div>
+
+  <div class="cil-doc-editor-viewport" tabindex="0" [attr.aria-label]="fileName()">
+    <pre
+      class="cil-doc-code"
+    ><code>@for (line of highlightedLines(); track $index) {<span class="cil-doc-code-line"><span class="cil-doc-line-number" aria-hidden="true">{{ $index + 1 }}</span><span class="cil-doc-line-content">@for (token of line; track $index) {<span [style.color]="token.color || '#D4D4D4'">{{ token.content }}</span>}</span></span>}</code></pre>
+  </div>
+
+  <div class="cil-doc-editor-statusbar">
+    <div class="cil-doc-status-group">
+      <span class="cil-doc-status-dot"></span>
+
+      <span>{{ languageLabel() }}</span>
+    </div>
+
+    <div class="cil-doc-status-group">
+      <span>
+        {{ lineCount() }}
+        {{ 'documentation.interactive.code.lines' | translate }}
+      </span>
+
+      <span>UTF-8</span>
+    </div>
+  </div>
+</div>
