@@ -1,15 +1,40 @@
 <div class="cil-container cil-lab-page">
   <header class="cil-lab-header">
-    <div>
-      <p class="cil-eyebrow">{{ 'imageLab.eyebrow' | translate }}</p>
-      <h1 class="cil-lab-title">{{ 'imageLab.title' | translate }}</h1>
-      <p class="cil-lab-subtitle">{{ 'imageLab.subtitle' | translate }}</p>
+    <div class="cil-lab-heading">
+      <p class="cil-eyebrow">
+        {{ 'imageLab.eyebrow' | translate }}
+      </p>
+
+      <h1 class="cil-lab-title">
+        {{ 'imageLab.title' | translate }}
+      </h1>
+
+      <p class="cil-lab-subtitle">
+        {{ 'imageLab.subtitle' | translate }}
+      </p>
     </div>
+
     <div class="cil-cloud-summary">
-      <span class="cil-cloud-label">{{ 'imageLab.cloudLabel' | translate }}</span>
-      <span class="cil-cloud-value font-mono-tech">{{ store.cloudName }}</span>
+      <span class="cil-cloud-indicator"></span>
+
+      <span class="cil-cloud-label">
+        {{ 'imageLab.cloudLabel' | translate }}
+      </span>
+
+      <span class="cil-cloud-value font-mono-tech">
+        {{ store.cloudName }}
+      </span>
     </div>
   </header>
+
+  <!-- OPTIMIZATION OVERVIEW -->
+
+  <cil-optimization-metrics
+    [result]="store.result()"
+    [status]="store.status()"
+  />
+
+  <!-- IMAGE WORKBENCH -->
 
   <div class="cil-lab-grid">
     <div class="cil-lab-main-col">
@@ -23,8 +48,6 @@
         (retry)="store.retryMeasurement()"
       />
 
-      <cil-optimization-metrics [result]="store.result()" [status]="store.status()" />
-
       <cil-image-gallery
         [assets]="store.filteredAssets()"
         [selectedImageId]="store.selectedImage().id"
@@ -34,7 +57,7 @@
       />
     </div>
 
-    <div class="cil-lab-side-col">
+    <aside class="cil-lab-side-col">
       <cil-transformation-controls
         [config]="store.config()"
         [optimizedUrl]="store.optimizedUrl()"
@@ -45,24 +68,66 @@
         (maxWidthChange)="store.setMaxWidth($event)"
         (resetRequested)="store.resetSettings()"
       />
+    </aside>
+  </div>
+
+  <!-- DEVELOPER TOOLS -->
+
+  <section class="cil-developer-tools">
+    <div class="cil-tools-heading">
+      <h2>
+        {{ 'workbench.developerTools' | translate }}
+      </h2>
+
+      <p>
+        {{ 'workbench.developerToolsDescription' | translate }}
+      </p>
     </div>
-  </div>
 
-  <div class="cil-lab-lower">
-    <cil-url-preview [url]="store.optimizedUrl()" />
+    <div
+      class="cil-workbench-tabs"
+      role="group"
+      [attr.aria-label]="'workbench.developerTools' | translate"
+    >
+      @for (tab of tabs; track tab.id) {
+        <button
+          type="button"
+          class="cil-workbench-tab cil-focusable"
+          [class.cil-workbench-tab--active]="activeTab() === tab.id"
+          [attr.aria-pressed]="activeTab() === tab.id"
+          (click)="selectTab(tab.id)"
+        >
+          {{ tab.label | translate }}
+        </button>
+      }
+    </div>
 
-    <cil-code-playground
-      [cloudName]="store.cloudName"
-      [publicId]="store.selectedImage().publicId"
-      [config]="store.config()"
-      [optimizedUrl]="store.optimizedUrl()"
-      [srcSet]="store.responsiveSrcSet()"
-    />
+    <div class="cil-workbench-content">
+      @switch (activeTab()) {
+        @case ('code') {
+          <cil-code-playground
+            [cloudName]="store.cloudName"
+            [publicId]="store.selectedImage().publicId"
+            [config]="store.config()"
+            [optimizedUrl]="store.optimizedUrl()"
+            [srcSet]="store.responsiveSrcSet()"
+          />
+        }
 
-    <cil-responsive-preview
-      [asset]="store.selectedImage()"
-      [candidates]="store.responsiveCandidates()"
-      [srcSet]="store.responsiveSrcSet()"
-    />
-  </div>
+        @case ('url') {
+          <cil-url-preview
+            [url]="store.optimizedUrl()"
+          />
+        }
+
+        @case ('responsive') {
+          <cil-responsive-preview
+            [asset]="store.selectedImage()"
+            [candidates]="store.responsiveCandidates()"
+            [srcSet]="store.responsiveSrcSet()"
+          />
+        }
+      }
+    </div>
+  </section>
 </div>

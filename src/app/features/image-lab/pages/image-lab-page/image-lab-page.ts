@@ -1,5 +1,12 @@
-import { ChangeDetectionStrategy, Component, inject } from '@angular/core';
+import {
+  ChangeDetectionStrategy,
+  Component,
+  inject,
+  signal,
+} from '@angular/core';
+
 import { TranslatePipe } from '../../../../shared/pipes/translate.pipe';
+
 import { CodePlaygroundComponent } from '../../components/code-playground/code-playground';
 import { ImageComparatorComponent } from '../../components/image-comparator/image-comparator';
 import { ImageGalleryComponent } from '../../components/image-gallery/image-gallery';
@@ -7,7 +14,10 @@ import { OptimizationMetricsComponent } from '../../components/optimization-metr
 import { ResponsivePreviewComponent } from '../../components/responsive-preview/responsive-preview';
 import { TransformationControlsComponent } from '../../components/transformation-controls/transformation-controls';
 import { UrlPreviewComponent } from '../../components/url-preview/url-preview';
+
 import { ImageLabStore } from '../../state/image-lab.store';
+
+type WorkbenchTab = 'code' | 'url' | 'responsive';
 
 @Component({
   selector: 'cil-image-lab-page',
@@ -29,4 +39,29 @@ import { ImageLabStore } from '../../state/image-lab.store';
 })
 export class ImageLabPageComponent {
   protected readonly store = inject(ImageLabStore);
+
+  protected readonly activeTab =
+    signal<WorkbenchTab>('code');
+
+  protected readonly tabs: readonly {
+    id: WorkbenchTab;
+    label: string;
+  }[] = [
+    {
+      id: 'code',
+      label: 'codePlayground.heading',
+    },
+    {
+      id: 'url',
+      label: 'workbench.deliveryUrl',
+    },
+    {
+      id: 'responsive',
+      label: 'workbench.responsivePreview',
+    },
+  ];
+
+  protected selectTab(tab: WorkbenchTab): void {
+    this.activeTab.set(tab);
+  }
 }
