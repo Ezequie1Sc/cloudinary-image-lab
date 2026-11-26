@@ -255,6 +255,52 @@
         "title": "Buenas prácticas de rendimiento",
         "body": "Define atributos width y height explícitos para evitar Cumulative Layout Shift (CLS), aplica loading='lazy' solo en imágenes fuera del viewport inicial, cachea resultados medidos y cancela solicitudes obsoletas al cambiar controles rápidamente."
       }
+    },
+    "interactive": {
+      "code": {
+        "lines": "líneas"
+      },
+      "pipeline": {
+        "eyebrow": "01 / ENTREGA MULTIMEDIA",
+        "title": "Del origen a la pantalla",
+        "subtitle": "Explora cómo Cloudinary transforma y entrega imágenes mediante un flujo interactivo.",
+        "play": "Reproducir animación",
+        "pause": "Pausar animación",
+        "reset": "Reiniciar flujo",
+        "playing": "Animación en reproducción",
+        "paused": "Animación pausada",
+        "hint": "Selecciona cualquier etapa para explorar",
+        "step": "Paso",
+        "progress": "Progreso del flujo",
+        "stagesLabel": "Etapas de entrega de imágenes",
+        "example": "Ejemplo técnico",
+        "stages": {
+          "source": {
+            "title": "Imagen original",
+            "caption": "Recurso original",
+            "description": "La imagen original se almacena en tu entorno de Cloudinary. Funciona como el recurso maestro a partir del cual se pueden generar variantes transformadas sin modificar el archivo original.",
+            "example": "Public ID: sample"
+          },
+          "transformation": {
+            "title": "Transformación",
+            "caption": "Redimensionar y optimizar",
+            "description": "Cloudinary procesa los parámetros de transformación solicitados en la URL de entrega. Las dimensiones, la calidad de compresión y el formato de salida pueden ajustarse dinámicamente según las necesidades de la aplicación.",
+            "example": "c_limit,w_800/q_auto/f_auto"
+          },
+          "cdn": {
+            "title": "CDN de Cloudinary",
+            "caption": "Entrega en caché",
+            "description": "La imagen transformada puede almacenarse en caché y distribuirse mediante la infraestructura de entrega de Cloudinary. Las solicitudes compatibles posteriores pueden reutilizar las variantes almacenadas, reduciendo la necesidad de repetir el procesamiento.",
+            "example": "res.cloudinary.com/demo/image/upload/"
+          },
+          "device": {
+            "title": "Dispositivo",
+            "caption": "Imagen optimizada",
+            "description": "El navegador recibe la representación solicitada de la imagen. Con dimensiones, calidad y formato adecuados, el recurso resultante puede consumir menos ancho de banda manteniendo una calidad visual apropiada.",
+            "example": "Content-Type: image/webp (ejemplo)"
+          }
+        }
+      }
     }
   },
   "notifications": {
