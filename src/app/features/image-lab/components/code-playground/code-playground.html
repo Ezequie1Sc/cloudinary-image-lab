@@ -1,29 +1,39 @@
 <section class="cil-playground cil-surface" aria-label="Code playground">
   <div class="cil-playground-header">
     <div>
-      <h2 class="cil-playground-title">{{ 'codePlayground.heading' | translate }}</h2>
-      <p class="cil-playground-subtitle">{{ 'codePlayground.subtitle' | translate }}</p>
+      <h2 class="cil-playground-title">
+        {{ 'codePlayground.heading' | translate }}
+      </h2>
+
+      <p class="cil-playground-subtitle">
+        {{ 'codePlayground.subtitle' | translate }}
+      </p>
     </div>
 
     <cil-button variant="secondary" size="sm" (click)="copySnippet()">
       @if (copied()) {
-        <svg lucideCheck [size]="14" aria-hidden="true"></svg>
-        <span>{{ 'codePlayground.copied' | translate }}</span>
+        <svg lucideCheck [size]="14" aria-hidden="true" class="cil-copy-success"></svg>
+
+        <span>
+          {{ 'codePlayground.copied' | translate }}
+        </span>
       } @else {
         <svg lucideCopy [size]="14" aria-hidden="true"></svg>
-        <span>{{ 'codePlayground.copy' | translate }}</span>
+
+        <span>
+          {{ 'codePlayground.copy' | translate }}
+        </span>
       }
     </cil-button>
   </div>
 
-  <div class="cil-playground-tabs" role="tablist">
+  <div class="cil-playground-tabs" role="group" aria-label="Code languages">
     @for (tab of tabs; track tab) {
       <button
         type="button"
-        role="tab"
         class="cil-tab-btn cil-focusable"
         [class.cil-tab-btn--active]="activeTab() === tab"
-        [attr.aria-selected]="activeTab() === tab"
+        [attr.aria-pressed]="activeTab() === tab"
         (click)="selectTab(tab)"
       >
         {{ 'codePlayground.tabs.' + tab | translate }}
@@ -31,5 +41,55 @@
     }
   </div>
 
-  <pre class="cil-code-block"><code>{{ snippet() }}</code></pre>
+  <div class="cil-editor">
+    <div class="cil-editor-toolbar">
+      <div class="cil-editor-file">
+        @switch (activeTab()) {
+          @case ('angular') {
+            <span class="cil-file-icon cil-file-icon--angular" aria-hidden="true"> A </span>
+          }
+
+          @case ('typescript') {
+            <span class="cil-file-icon cil-file-icon--typescript" aria-hidden="true"> TS </span>
+          }
+
+          @case ('html') {
+            <span class="cil-file-icon cil-file-icon--html" aria-hidden="true"> &lt;&gt; </span>
+          }
+
+          @default {
+            <span class="cil-file-icon cil-file-icon--text" aria-hidden="true"> TXT </span>
+          }
+        }
+
+        <span class="cil-editor-filename">
+          {{ fileName() }}
+        </span>
+      </div>
+
+      <span class="cil-editor-readonly"> Read-only </span>
+    </div>
+
+    <div class="cil-editor-viewport" tabindex="0" aria-label="Generated code">
+      <pre
+        class="cil-code-block"
+      ><code>@for (line of highlightedLines(); track $index) {<span class="cil-code-line"><span class="cil-line-number" aria-hidden="true">{{ $index + 1 }}</span><span class="cil-line-content">@for (token of line; track $index) {<span [style.color]="token.color || '#D4D4D4'">{{ token.content }}</span>}</span></span>}</code></pre>
+    </div>
+
+    <div class="cil-editor-statusbar">
+      <div class="cil-status-group">
+        <span class="cil-status-indicator"></span>
+
+        <span>{{ languageLabel() }}</span>
+      </div>
+
+      <div class="cil-status-group">
+        <span>{{ lineCount() }} lines</span>
+
+        <span>UTF-8</span>
+
+        <span>2 Spaces</span>
+      </div>
+    </div>
+  </div>
 </section>
