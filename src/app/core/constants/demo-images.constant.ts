@@ -22,20 +22,20 @@ export const DEMO_IMAGE_ASSETS: readonly DemoImageAsset[] = [
     aspectRatio: '3 / 2',
   },
   {
-    id: 'nature-parrot',
-    publicId: 'docs/parrot-in-tree',
-    category: 'nature',
-    title: {
-      en: 'Canopy Parrot',
-      es: 'Loro en follaje',
-    },
-    alt: {
-      en: 'Colorful parrot perched in dense green tree foliage',
-      es: 'Loro colorido posado entre follaje verde denso',
-    },
-    sourceFormat: 'jpg',
-    aspectRatio: '3 / 2',
+  id: 'nature-mountain',
+  publicId: 'cld-sample-2',
+  category: 'nature',
+  title: {
+    en: 'Mountain Landscape',
+    es: 'Paisaje montañoso',
   },
+  alt: {
+    en: 'Mountain landscape with natural textures and fine details',
+    es: 'Paisaje montañoso con texturas naturales y detalles finos',
+  },
+  sourceFormat: 'jpg',
+  aspectRatio: '3 / 2',
+},
   {
     id: 'architecture-vieste',
     publicId: 'vieste_italy',
